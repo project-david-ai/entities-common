@@ -69,7 +69,7 @@ class AssistantCreate(BaseModel):
         False, description="False = Standard (Level 2), True = Autonomous (Level 3)."
     )
     web_access: bool = Field(False, description="Enable live web search and browsing capabilities.")
-    deep_research: bool = Field(False, description="Enable deep research capabilities.")  # <--- NEW
+    deep_research: bool = Field(False, description="Enable deep research capabilities.")
     decision_telemetry: bool = Field(
         False, description="Enable detailed reasoning/confidence logging."
     )

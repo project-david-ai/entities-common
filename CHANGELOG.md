@@ -1,3 +1,10 @@
+## [0.27.1](https://github.com/project-david-ai/entities-common/compare/v0.27.0...v0.27.1) (2026-02-23)
+
+
+### Bug Fixes
+
+* remove 'provider' field from StreamRequest schema ([7ff7d2f](https://github.com/project-david-ai/entities-common/commit/7ff7d2fc1c51aa4c0c230503a3310ca2e16d9c7d))
+
 # [0.27.0](https://github.com/frankie336/entities_common/compare/v0.26.0...v0.27.0) (2026-02-12)
 
 

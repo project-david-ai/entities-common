@@ -8,7 +8,7 @@ from projectdavid_common.schemas.vectors_schema import VectorStoreRead
 from ..constants.platform import PLATFORM_TOOLS
 
 
-# ───────────────────────────────────────────────#
+# ───────────────────────────────────────────────
 #  VALIDATION LOGIC
 # ───────────────────────────────────────────────
 def _validate_unique_tool_names(tools: Optional[List[dict]]) -> Optional[List[dict]]:

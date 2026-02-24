@@ -1,3 +1,10 @@
+# [0.29.0](https://github.com/project-david-ai/entities-common/compare/v0.28.0...v0.29.0) (2026-02-24)
+
+
+### Features
+
+* add engineer field to Assistant validation schemas (Create, Read, Update) ([8ec24f5](https://github.com/project-david-ai/entities-common/commit/8ec24f5e53b1af118419a7330412e99c2e3db60e))
+
 # [0.28.0](https://github.com/project-david-ai/entities-common/compare/v0.27.1...v0.28.0) (2026-02-24)
 
 

@@ -1,4 +1,4 @@
-# src/projectdavid_common/schemas/assistants_schema.py
+#src/projectdavid_common/schemas/assistants_schema.py
 from typing import Any, Dict, List, Optional
 
 from pydantic import BaseModel, ConfigDict, Field, HttpUrl, field_validator

@@ -1,3 +1,10 @@
+## [0.29.1](https://github.com/project-david-ai/entities-common/compare/v0.29.0...v0.29.1) (2026-02-24)
+
+
+### Bug Fixes
+
+* scope inventory to user_id, remove assistant_id partition key ([d634754](https://github.com/project-david-ai/entities-common/commit/d63475452609264614097dabd0365d9ac7c43c93))
+
 # [0.29.0](https://github.com/project-david-ai/entities-common/compare/v0.28.0...v0.29.0) (2026-02-24)
 
 

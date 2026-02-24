@@ -70,6 +70,9 @@ class AssistantCreate(BaseModel):
     )
     web_access: bool = Field(False, description="Enable live web search and browsing capabilities.")
     deep_research: bool = Field(False, description="Enable deep research capabilities.")
+    engineer: bool = Field(
+        False, description="Enable network engineering capabilities."
+    )  # <--- NEW
     decision_telemetry: bool = Field(
         False, description="Enable detailed reasoning/confidence logging."
     )
@@ -92,6 +95,7 @@ class AssistantCreate(BaseModel):
                 "agent_mode": True,
                 "web_access": True,
                 "deep_research": True,
+                "engineer": True,  # <--- NEW
                 "decision_telemetry": True,
                 "tool_resources": {"file_search": {"vector_store_ids": ["vs_docs"]}},
             }
@@ -125,7 +129,8 @@ class AssistantRead(BaseModel):
     max_turns: int
     agent_mode: bool
     web_access: bool
-    deep_research: bool  # <--- NEW
+    deep_research: bool
+    engineer: bool  # <--- NEW
     decision_telemetry: bool
 
     vector_stores: List[VectorStoreRead] = Field(default_factory=list)
@@ -152,7 +157,8 @@ class AssistantUpdate(BaseModel):
     max_turns: Optional[int] = Field(None, ge=1)
     agent_mode: Optional[bool] = None
     web_access: Optional[bool] = None
-    deep_research: Optional[bool] = None  # <--- NEW
+    deep_research: Optional[bool] = None
+    engineer: Optional[bool] = None  # <--- NEW
     decision_telemetry: Optional[bool] = None
 
     # ─── relationship IDs (lists of strings) ──

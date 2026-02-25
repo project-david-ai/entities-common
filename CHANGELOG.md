@@ -1,3 +1,10 @@
+# [0.30.0](https://github.com/project-david-ai/entities-common/compare/v0.29.1...v0.30.0) (2026-02-25)
+
+
+### Features
+
+* add PLATFORM_TOOLS in plaform_tools.py ([e14cd67](https://github.com/project-david-ai/entities-common/commit/e14cd671bc0044dd8c6fa045e9bf41d0c0087e0f))
+
 ## [0.29.1](https://github.com/project-david-ai/entities-common/compare/v0.29.0...v0.29.1) (2026-02-24)
 
 

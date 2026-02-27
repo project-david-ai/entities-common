@@ -6,12 +6,13 @@ from pydantic import BaseModel, ConfigDict, Field
 
 from projectdavid_common.schemas.enums import StatusEnum
 
-
 # --------------------------------------------------------------------------- #
 #  BATFISH SNAPSHOT SCHEMAS
 # --------------------------------------------------------------------------- #
+
+
 class BatfishSnapshotCreate(BaseModel):
-    """Payload to create/refresh a snapshot. snapshot_name is the caller label."""
+    """Payload to create/refresh a snapshot. ID is generated server-side."""
 
     snapshot_name: str = Field(
         ..., min_length=3, max_length=128, description="Human-friendly label (e.g., 'incident_001')"
@@ -19,20 +20,12 @@ class BatfishSnapshotCreate(BaseModel):
     configs_root: Optional[str] = Field(None, description="Config source path")
 
 
-class BatfishSnapshotCreateWithSharedId(BatfishSnapshotCreate):
-    """Same as Create, but the API routing layer pre-generates the programmable shared ID."""
-
-    shared_id: str = Field(
-        ..., description="Pre-generated opaque ID returned to caller e.g. snap_abc123"
-    )
-
-
 class BatfishSnapshotRead(BaseModel):
     """Serialised snapshot record returned to callers."""
 
-    id: str = Field(..., description="Opaque programmable snapshot ID")
+    id: str = Field(..., description="Opaque snapshot ID (server-generated)")
     snapshot_name: str = Field(..., description="User-supplied label")
-    snapshot_key: str = Field(..., description="Backend Batfish isolation key ({user_id}_{id})")
+    snapshot_key: str = Field(..., description="Backend isolation key ({user_id}_{id})")
     user_id: str = Field(..., description="Owner user ID")
     configs_root: Optional[str] = Field(None, description="Config source path")
     device_count: int = Field(default=0, ge=0, description="Number of devices ingested")
@@ -65,18 +58,18 @@ class BatfishSnapshotList(BaseModel):
 # --------------------------------------------------------------------------- #
 #  TOOL RESULT SCHEMAS
 # --------------------------------------------------------------------------- #
+
+
 class BatfishToolResult(BaseModel):
     """Single tool call response."""
 
     tool: str
-    snapshot_name: str
-    snapshot_key: str
+    snapshot_id: str = Field(..., description="Opaque snapshot ID the tool ran against")
     result: str
 
 
 class BatfishAllToolsResult(BaseModel):
     """All tools response keyed by tool name."""
 
-    snapshot_name: str
-    snapshot_key: str
+    snapshot_id: str = Field(..., description="Opaque snapshot ID the tools ran against")
     results: Dict[str, Any]

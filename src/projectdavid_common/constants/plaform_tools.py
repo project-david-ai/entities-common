@@ -15,4 +15,5 @@ PLATFORM_TOOLS = [
     "append_scratchpad",
     "get_device_info",
     "search_inventory_by_group",
+    "run_batfish_tool",
 ]

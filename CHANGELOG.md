@@ -1,3 +1,10 @@
+# [0.32.0](https://github.com/project-david-ai/entities-common/compare/v0.31.0...v0.32.0) (2026-02-27)
+
+
+### Features
+
+* new batfish_schema.py ([9f67506](https://github.com/project-david-ai/entities-common/commit/9f67506ca2c97699e4262e4e98c96b03c54a1ee8))
+
 # [0.31.0](https://github.com/project-david-ai/entities-common/compare/v0.30.0...v0.31.0) (2026-02-27)
 
 

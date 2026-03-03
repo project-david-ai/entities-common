@@ -1,6 +1,7 @@
 # src/projectdavid_common/constants/plaform_tools.py
 PLATFORM_TOOLS = [
     "code_interpreter",
+    "file_search",
     "web_search",
     "search_web_page",
     "scroll_web_page",

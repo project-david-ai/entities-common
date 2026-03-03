@@ -1,3 +1,10 @@
+# [0.36.0](https://github.com/project-david-ai/entities-common/compare/v0.35.0...v0.36.0) (2026-03-03)
+
+
+### Features
+
+* Add file_search to PLATFORM_TOOLS ([68db291](https://github.com/project-david-ai/entities-common/commit/68db2912a4508b827a8567a2c2d4440612345955))
+
 # [0.35.0](https://github.com/project-david-ai/entities-common/compare/v0.34.0...v0.35.0) (2026-02-27)
 
 

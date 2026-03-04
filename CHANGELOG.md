@@ -1,3 +1,10 @@
+# [0.37.0](https://github.com/project-david-ai/entities-common/compare/v0.36.0...v0.37.0) (2026-03-04)
+
+
+### Features
+
+* add OLLAMA_MODELS registry with local inference routing prefix ([6d2aff4](https://github.com/project-david-ai/entities-common/commit/6d2aff4c135e741d011a0054c92887088751812e))
+
 # [0.36.0](https://github.com/project-david-ai/entities-common/compare/v0.35.0...v0.36.0) (2026-03-03)
 
 

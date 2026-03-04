@@ -11,6 +11,22 @@
 # Each dictionary acts as the "driver" for that vendor
 # _________________________________________________
 
+
+OLLAMA_MODELS = {
+    # --- Qwen ---
+    "ollama/qwen3:4b": "qwen3:4b",
+    "ollama/qwen3:8b": "qwen3:8b",
+    "ollama/qwen3:14b": "qwen3:14b",
+    # --- Meta ---
+    "ollama/llama3.2:3b": "llama3.2:3b",
+    "ollama/llama3.1:8b": "llama3.1:8b",
+    # --- Mistral ---
+    "ollama/mistral:7b": "mistral:7b",
+    # --- Google ---
+    "ollama/gemma3:4b": "gemma3:4b",
+}
+
+
 DEEPSEEK_NATIVE_MODELS = {
     "deepseek-ai/deepseek-reasoner": "deepseek-reasoner",
     "deepseek-ai/deepseek-chat": "deepseek-chat",
@@ -148,4 +164,5 @@ MODEL_MAP = {
     **DEEPSEEK_NATIVE_MODELS,
     **TOGETHER_AI_MODELS,
     **HYPERBOLIC_MODELS,
+    **OLLAMA_MODELS,
 }

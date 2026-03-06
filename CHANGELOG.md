@@ -1,3 +1,10 @@
+# [0.39.0](https://github.com/project-david-ai/entities-common/compare/v0.38.0...v0.39.0) (2026-03-06)
+
+
+### Features
+
+* add optional owner_id to AssistantRead schema. ([8d639b5](https://github.com/project-david-ai/entities-common/commit/8d639b59f91c9c5fb61e0eff878ffe6033d65b59))
+
 # [0.38.0](https://github.com/project-david-ai/entities-common/compare/v0.37.0...v0.38.0) (2026-03-06)
 
 

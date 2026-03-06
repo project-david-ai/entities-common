@@ -25,8 +25,6 @@ def _validate_unique_tool_names(tools: Optional[List[dict]]) -> Optional[List[di
     for tool in tools:
         t_type = tool.get("type", "")
 
-        # Only validate if the user is defining a CUSTOM FUNCTION.
-        # This allows {"type": "code_interpreter"} to pass through untouched.
         if t_type == "function":
             func_def = tool.get("function", {})
             name = func_def.get("name")
@@ -70,9 +68,7 @@ class AssistantCreate(BaseModel):
     )
     web_access: bool = Field(False, description="Enable live web search and browsing capabilities.")
     deep_research: bool = Field(False, description="Enable deep research capabilities.")
-    engineer: bool = Field(
-        False, description="Enable network engineering capabilities."
-    )  # <--- NEW
+    engineer: bool = Field(False, description="Enable network engineering capabilities.")
     decision_telemetry: bool = Field(
         False, description="Enable detailed reasoning/confidence logging."
     )
@@ -95,7 +91,7 @@ class AssistantCreate(BaseModel):
                 "agent_mode": True,
                 "web_access": True,
                 "deep_research": True,
-                "engineer": True,  # <--- NEW
+                "engineer": True,
                 "decision_telemetry": True,
                 "tool_resources": {"file_search": {"vector_store_ids": ["vs_docs"]}},
             }
@@ -109,6 +105,7 @@ class AssistantCreate(BaseModel):
 class AssistantRead(BaseModel):
     id: str
     user_id: Optional[str] = None
+    owner_id: Optional[str] = None  # ← ADDED: required for ownership checks in inference router
     object: str
     created_at: int
 
@@ -130,7 +127,7 @@ class AssistantRead(BaseModel):
     agent_mode: bool
     web_access: bool
     deep_research: bool
-    engineer: bool  # <--- NEW
+    engineer: bool
     decision_telemetry: bool
 
     vector_stores: List[VectorStoreRead] = Field(default_factory=list)
@@ -158,7 +155,7 @@ class AssistantUpdate(BaseModel):
     agent_mode: Optional[bool] = None
     web_access: Optional[bool] = None
     deep_research: Optional[bool] = None
-    engineer: Optional[bool] = None  # <--- NEW
+    engineer: Optional[bool] = None
     decision_telemetry: Optional[bool] = None
 
     # ─── relationship IDs (lists of strings) ──
@@ -179,5 +176,4 @@ class AssistantUpdate(BaseModel):
     def prevent_reserved_names(cls, v):
         return _validate_unique_tool_names(v)
 
-    # forbid unknown keys so stray dicts can’t sneak in
     model_config = ConfigDict(extra="forbid")

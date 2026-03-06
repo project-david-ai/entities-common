@@ -1,4 +1,4 @@
-from typing import Optional
+from typing import Any, Dict, Optional
 
 from pydantic import (
     BaseModel,
@@ -10,10 +10,8 @@ from projectdavid_common.constants.ai_model_map import MODEL_MAP
 
 
 class StreamRequest(BaseModel):
-    # 1. FIX: Tell Pydantic to allow fields starting with "model_"
     model_config = ConfigDict(protected_namespaces=())
 
-    # provider: str  <-- REMOVED
     model: str
     api_key: Optional[str] = None
     thread_id: str
@@ -21,6 +19,7 @@ class StreamRequest(BaseModel):
     run_id: str
     assistant_id: str
     content: Optional[str] = None
+    meta_data: Optional[Dict[str, Any]] = None
 
     @field_validator("model")
     @classmethod

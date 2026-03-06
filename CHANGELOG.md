@@ -1,3 +1,10 @@
+# [0.38.0](https://github.com/project-david-ai/entities-common/compare/v0.37.0...v0.38.0) (2026-03-06)
+
+
+### Features
+
+* add optional meta_data field to StreamRequest schema ([88e22b6](https://github.com/project-david-ai/entities-common/commit/88e22b6c8ea7bc725c94296ed5e7bfabbaff51bd))
+
 # [0.37.0](https://github.com/project-david-ai/entities-common/compare/v0.36.0...v0.37.0) (2026-03-04)
 
 

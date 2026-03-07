@@ -6,10 +6,12 @@ from projectdavid_common.schemas.users_schema import UserBase
 
 
 class ThreadCreate(BaseModel):
-    # ➊ Now optional
     participant_ids: Optional[List[str]] = Field(
         default=None,
-        description="List of participant IDs. " "Omit to default to the authenticated user.",
+        description=(
+            "Additional participant IDs to attach at creation time. "
+            "The authenticated user (owner) is always included automatically."
+        ),
     )
     meta_data: Optional[Dict[str, Any]] = Field(
         default=None, description="Optional metadata for the thread"
@@ -23,10 +25,19 @@ class ThreadRead(BaseModel):
     object: str
     tool_resources: Dict[str, Any]
 
+    # ── Ownership (read-only, set server-side) ───────────────────────────────
+    # Nullable during the back-fill window; will be non-null on all threads
+    # created after the owner_id migration is applied.
+    owner_id: Optional[str] = Field(
+        default=None,
+        description="Canonical owner of this thread. Read-only — set at creation time.",
+    )
+
     model_config = ConfigDict(from_attributes=True)
 
 
 class ThreadUpdate(BaseModel):
+    # owner_id is deliberately absent — ownership is not transferable via update.
     participant_ids: Optional[List[str]] = Field(
         default=None, description="Updated list of participant IDs"
     )
@@ -43,6 +54,7 @@ class ThreadParticipant(UserBase):
 
 
 class ThreadReadDetailed(ThreadRead):
+    # owner_id is inherited from ThreadRead.
     participants: List[UserBase]
 
     model_config = ConfigDict(from_attributes=True)

@@ -1,3 +1,10 @@
+# [0.41.0](https://github.com/project-david-ai/entities-common/compare/v0.40.1...v0.41.0) (2026-03-07)
+
+
+### Features
+
+* add optional owner_id to Thread schemas and update participant_ids description ([2980ce5](https://github.com/project-david-ai/entities-common/commit/2980ce5cd4f6dd093a0a711848e492a3e9932d27))
+
 ## [0.40.1](https://github.com/project-david-ai/entities-common/compare/v0.40.0...v0.40.1) (2026-03-07)
 
 

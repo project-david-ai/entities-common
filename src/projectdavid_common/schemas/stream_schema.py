@@ -15,7 +15,6 @@ class StreamRequest(BaseModel):
 
     model: str
     api_key: Optional[str] = None  # LLM provider key (Hyperbolic, OpenAI, etc.)
-    service_token: Optional[str] = None  # Internal service-to-service bypass token
     thread_id: str
     message_id: str
     run_id: str

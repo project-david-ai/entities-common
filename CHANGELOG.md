@@ -1,3 +1,10 @@
+## [0.40.1](https://github.com/project-david-ai/entities-common/compare/v0.40.0...v0.40.1) (2026-03-07)
+
+
+### Bug Fixes
+
+* remove unused service_token field from StreamRequest schema ([354eda1](https://github.com/project-david-ai/entities-common/commit/354eda1c8de29c1747104fe655d339d32e3189ab))
+
 # [0.40.0](https://github.com/project-david-ai/entities-common/compare/v0.39.0...v0.40.0) (2026-03-07)
 
 

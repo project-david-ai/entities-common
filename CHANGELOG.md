@@ -1,3 +1,10 @@
+# [0.40.0](https://github.com/project-david-ai/entities-common/compare/v0.39.0...v0.40.0) (2026-03-07)
+
+
+### Features
+
+* add optional service_token to StreamRequest schema ([d75c18b](https://github.com/project-david-ai/entities-common/commit/d75c18b99a3cc443ee3c5385a0cf287cc046e41c))
+
 # [0.39.0](https://github.com/project-david-ai/entities-common/compare/v0.38.0...v0.39.0) (2026-03-06)
 
 

@@ -1,21 +1,19 @@
-PLATFORM_TOOLS = {
-    # Standard Platform Tools
+PLATFORM_TOOLS = [
     "code_interpreter",
     "file_search",
-    "computer",
-    "vector_store_search",
-    # Web / Browser Tools
     "web_search",
     "search_web_page",
     "scroll_web_page",
     "read_web_page",
     "perform_web_search",
-    # Deep Research / Supervisor Tools
+    "vector_store_search",
+    "computer",
     "delegate_research_task",
+    "delegate_engineer_task",
     "read_scratchpad",
     "update_scratchpad",
     "append_scratchpad",
-}
+]
 
 TOOLS_ID_MAP = {
     "code_interpreter": "tool_79YkQEz5cDwpJjnR7oJ80D",

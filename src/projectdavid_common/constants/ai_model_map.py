@@ -10,6 +10,10 @@
 # PROVIDER-SPECIFIC MODEL MAPS
 # Each dictionary acts as the "driver" for that vendor
 # _________________________________________________
+VLLM_MODELS = {
+    # --- Qwen ---
+    "vllm/Qwen/Qwen2.5-3B-Instruct": "Qwen/Qwen2.5-3B-Instruct",
+}
 
 
 OLLAMA_MODELS = {
@@ -165,4 +169,5 @@ MODEL_MAP = {
     **TOGETHER_AI_MODELS,
     **HYPERBOLIC_MODELS,
     **OLLAMA_MODELS,
+    **VLLM_MODELS,
 }

@@ -1,3 +1,10 @@
+# [0.42.0](https://github.com/project-david-ai/entities-common/compare/v0.41.0...v0.42.0) (2026-03-11)
+
+
+### Features
+
+* Add VLLM_MODELS to model map. ([3e4d811](https://github.com/project-david-ai/entities-common/commit/3e4d8117e0acbe58ae0c37d3c7a3ffd7b177363b))
+
 # [0.41.0](https://github.com/project-david-ai/entities-common/compare/v0.40.1...v0.41.0) (2026-03-07)
 
 

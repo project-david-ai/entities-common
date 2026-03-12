@@ -8,11 +8,11 @@ PLATFORM_TOOLS = [
     "perform_web_search",
     "vector_store_search",
     "computer",
-    "delegate_research_task",
-    "delegate_engineer_task",
-    "read_scratchpad",
-    "update_scratchpad",
-    "append_scratchpad",
+    # "delegate_research_task",
+    # "delegate_engineer_task",
+    # "read_scratchpad",
+    # "update_scratchpad",
+    # "append_scratchpad",
 ]
 
 TOOLS_ID_MAP = {

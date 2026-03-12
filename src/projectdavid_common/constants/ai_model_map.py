@@ -9,10 +9,49 @@
 # ------------------------------------------------
 # PROVIDER-SPECIFIC MODEL MAPS
 # Each dictionary acts as the "driver" for that vendor
-# _________________________________________________
+# ------------------------------------------------
+
 VLLM_MODELS = {
-    # --- Qwen ---
-    "vllm/Qwen/Qwen2.5-3B-Instruct": "Qwen/Qwen2.5-3B-Instruct",
+    # ── Qwen2.5 Instruct ─────────────────────────────────────────────────────
+    "vllm/Qwen/Qwen2.5-1.5B-Instruct": "Qwen/Qwen2.5-1.5B-Instruct",  # text only, no tool calling
+    "vllm/Qwen/Qwen2.5-3B-Instruct": "Qwen/Qwen2.5-3B-Instruct",  # recommended entry point
+    "vllm/Qwen/Qwen2.5-7B-Instruct": "Qwen/Qwen2.5-7B-Instruct",
+    "vllm/Qwen/Qwen2.5-14B-Instruct": "Qwen/Qwen2.5-14B-Instruct",
+    "vllm/Qwen/Qwen2.5-32B-Instruct": "Qwen/Qwen2.5-32B-Instruct",
+    "vllm/Qwen/Qwen2.5-72B-Instruct": "Qwen/Qwen2.5-72B-Instruct",
+    # ── Qwen3 (thinking-capable) ─────────────────────────────────────────────
+    "vllm/Qwen/Qwen3-1.7B": "Qwen/Qwen3-1.7B",  # text only, no tool calling
+    "vllm/Qwen/Qwen3-4B": "Qwen/Qwen3-4B",
+    "vllm/Qwen/Qwen3-8B": "Qwen/Qwen3-8B",
+    "vllm/Qwen/Qwen3-14B": "Qwen/Qwen3-14B",
+    "vllm/Qwen/Qwen3-32B": "Qwen/Qwen3-32B",
+    # ── Qwen2.5-VL (vision) ──────────────────────────────────────────────────
+    "vllm/Qwen/Qwen2.5-VL-3B-Instruct": "Qwen/Qwen2.5-VL-3B-Instruct",
+    "vllm/Qwen/Qwen2.5-VL-7B-Instruct": "Qwen/Qwen2.5-VL-7B-Instruct",
+    "vllm/Qwen/Qwen2.5-VL-72B-Instruct": "Qwen/Qwen2.5-VL-72B-Instruct",
+    # ── Mistral ──────────────────────────────────────────────────────────────
+    "vllm/mistralai/Mistral-7B-Instruct-v0.3": "mistralai/Mistral-7B-Instruct-v0.3",
+    "vllm/mistralai/Mistral-Nemo-Instruct-2407": "mistralai/Mistral-Nemo-Instruct-2407",  # 12B
+    "vllm/mistralai/Mistral-Small-3.1-24B-Instruct-2503": "mistralai/Mistral-Small-3.1-24B-Instruct-2503",
+    # ── Llama 3.x (requires HF gated access) ────────────────────────────────
+    "vllm/meta-llama/Llama-3.1-8B-Instruct": "meta-llama/Llama-3.1-8B-Instruct",
+    "vllm/meta-llama/Llama-3.1-70B-Instruct": "meta-llama/Llama-3.1-70B-Instruct",
+    "vllm/meta-llama/Llama-3.2-3B-Instruct": "meta-llama/Llama-3.2-3B-Instruct",
+    "vllm/meta-llama/Llama-3.3-70B-Instruct": "meta-llama/Llama-3.3-70B-Instruct",
+    # ── Phi-3 / Phi-3.5 (Microsoft) ─────────────────────────────────────────
+    "vllm/microsoft/Phi-3.5-mini-instruct": "microsoft/Phi-3.5-mini-instruct",  # 3.8B
+    "vllm/microsoft/Phi-3-medium-128k-instruct": "microsoft/Phi-3-medium-128k-instruct",  # 14B
+    # ── Gemma 2 (Google) ─────────────────────────────────────────────────────
+    "vllm/google/gemma-2-2b-it": "google/gemma-2-2b-it",
+    "vllm/google/gemma-2-9b-it": "google/gemma-2-9b-it",
+    "vllm/google/gemma-2-27b-it": "google/gemma-2-27b-it",
+    # ── DeepSeek ─────────────────────────────────────────────────────────────
+    "vllm/deepseek-ai/DeepSeek-R1-Distill-Qwen-7B": "deepseek-ai/DeepSeek-R1-Distill-Qwen-7B",
+    "vllm/deepseek-ai/DeepSeek-R1-Distill-Llama-8B": "deepseek-ai/DeepSeek-R1-Distill-Llama-8B",
+    # ── InternVL2 (vision) ───────────────────────────────────────────────────
+    "vllm/OpenGVLab/InternVL2-4B": "OpenGVLab/InternVL2-4B",
+    "vllm/OpenGVLab/InternVL2-8B": "OpenGVLab/InternVL2-8B",
+    "vllm/OpenGVLab/InternVL2-26B": "OpenGVLab/InternVL2-26B",
 }
 
 

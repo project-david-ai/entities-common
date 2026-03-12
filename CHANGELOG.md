@@ -1,3 +1,10 @@
+# [0.44.0](https://github.com/project-david-ai/entities-common/compare/v0.43.1...v0.44.0) (2026-03-12)
+
+
+### Features
+
+* Add attachments support and refine Message schema fields ([b422001](https://github.com/project-david-ai/entities-common/commit/b422001fb5433a382e81957a6278a7287e83ef25))
+
 ## [0.43.1](https://github.com/project-david-ai/entities-common/compare/v0.43.0...v0.43.1) (2026-03-12)
 
 

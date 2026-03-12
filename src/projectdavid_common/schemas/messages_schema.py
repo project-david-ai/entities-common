@@ -20,7 +20,7 @@ class MessageRole(str, Enum):
 #   content = "What is in this image?"
 #
 # Multimodal (produced by MessagesClient.build_image_message — never by hand):
-#   content = [
+#   content =[
 #       {"type": "text",      "text": "What is in this image?"},
 #       {"type": "image_url", "image_url": {"url": "data:image/jpeg;base64,..."}}
 #   ]
@@ -29,7 +29,7 @@ ContentType = Union[str, List[Dict[str, Any]]]
 
 
 class MessageCreate(BaseModel):
-    content: ContentType  # ← was: str
+    content: ContentType  # Supports plain string or parsed multimodal array
     thread_id: str
     sender_id: Optional[str] = None
     assistant_id: str
@@ -38,6 +38,9 @@ class MessageCreate(BaseModel):
     tool_call_id: Optional[str] = None
     meta_data: Optional[Dict[str, Any]] = None
     is_last_chunk: bool = False
+
+    # NEW: Accepts the SDK-extracted attachments (e.g.,[{"type": "image", "file_id": "file_123"}])
+    attachments: Optional[List[Dict[str, Any]]] = []
 
     @field_validator("role", mode="before")
     @classmethod
@@ -57,6 +60,7 @@ class MessageCreate(BaseModel):
                 "assistant_id": "example_assistant_id",
                 "meta_data": {"key": "value"},
                 "role": "user",
+                "attachments": [],
             }
         }
     )
@@ -79,9 +83,12 @@ class ToolMessageCreate(BaseModel):
 class MessageRead(BaseModel):
     id: str
     assistant_id: Optional[str]
-    attachments: List[Any]
+
+    # UPDATED: Tightened from List[Any] to explicitly define the expected dict structure
+    attachments: List[Dict[str, Any]] = []
+
     completed_at: Optional[int]
-    content: ContentType  # ← was: str
+    content: ContentType
     created_at: int
     incomplete_at: Optional[int]
     incomplete_details: Optional[Dict[str, Any]]
@@ -99,7 +106,7 @@ class MessageRead(BaseModel):
 
 
 class MessageUpdate(BaseModel):
-    content: Optional[ContentType] = None  # ← was: Optional[str]
+    content: Optional[ContentType] = None
     meta_data: Optional[Dict[str, Any]] = None
     status: Optional[str] = None
     role: Optional[str] = None

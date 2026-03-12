@@ -1,6 +1,6 @@
 #! src/projectdavid_common/schemas/messages_schema.py
 from enum import Enum
-from typing import Any, Dict, List, Optional
+from typing import Any, Dict, List, Optional, Union
 
 from pydantic import BaseModel, ConfigDict, field_validator
 
@@ -13,17 +13,29 @@ class MessageRole(str, Enum):
     TOOL = "tool"
 
 
+# ---------------------------------------------------------------------------
+# ContentType
+#
+# Plain text:
+#   content = "What is in this image?"
+#
+# Multimodal (produced by MessagesClient.build_image_message — never by hand):
+#   content = [
+#       {"type": "text",      "text": "What is in this image?"},
+#       {"type": "image_url", "image_url": {"url": "data:image/jpeg;base64,..."}}
+#   ]
+# ---------------------------------------------------------------------------
+ContentType = Union[str, List[Dict[str, Any]]]
+
+
 class MessageCreate(BaseModel):
-    content: str
+    content: ContentType  # ← was: str
     thread_id: str
     sender_id: Optional[str] = None
     assistant_id: str
-    role: str  # Using string instead of Enum to allow flexible validation
+    role: str
     tool_id: Optional[str] = None
-
-    # --- Agentic Tracking ---
-    tool_call_id: Optional[str] = None  # ID of the call this message responds to
-
+    tool_call_id: Optional[str] = None
     meta_data: Optional[Dict[str, Any]] = None
     is_last_chunk: bool = False
 
@@ -51,7 +63,7 @@ class MessageCreate(BaseModel):
 
 
 class ToolMessageCreate(BaseModel):
-    content: str
+    content: str  # tool output is always plain text / JSON string
     tool_call_id: Optional[str] = None
 
     model_config = ConfigDict(
@@ -69,7 +81,7 @@ class MessageRead(BaseModel):
     assistant_id: Optional[str]
     attachments: List[Any]
     completed_at: Optional[int]
-    content: str
+    content: ContentType  # ← was: str
     created_at: int
     incomplete_at: Optional[int]
     incomplete_details: Optional[Dict[str, Any]]
@@ -78,10 +90,7 @@ class MessageRead(BaseModel):
     role: str
     run_id: Optional[str]
     tool_id: Optional[str] = None
-
-    # --- Agentic Tracking ---
     tool_call_id: Optional[str] = None
-
     status: Optional[str]
     thread_id: str
     sender_id: Optional[str] = None
@@ -90,10 +99,10 @@ class MessageRead(BaseModel):
 
 
 class MessageUpdate(BaseModel):
-    content: Optional[str]
-    meta_data: Optional[Dict[str, Any]]
-    status: Optional[str]
-    role: Optional[str]
+    content: Optional[ContentType] = None  # ← was: Optional[str]
+    meta_data: Optional[Dict[str, Any]] = None
+    status: Optional[str] = None
+    role: Optional[str] = None
     tool_call_id: Optional[str] = None
 
     @field_validator("role", mode="before")
@@ -115,11 +124,9 @@ class MessagesList(BaseModel):
     data: List[MessageRead]
     first_id: str | None = None
     last_id: str | None = None
-    has_more: bool = False  # earmarked for pagination later
+    has_more: bool = False
 
-    # QoL helper ------------------------------------------------------
     def to_list(self):
-        """Return plain list[dict] for quick consumption."""
         return [m.dict() for m in self.data]
 
     model_config = ConfigDict(from_attributes=True)

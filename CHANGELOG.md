@@ -1,3 +1,17 @@
+# [0.43.0](https://github.com/project-david-ai/entities-common/compare/v0.42.0...v0.43.0) (2026-03-12)
+
+
+### Bug Fixes
+
+* update PLATFORM_TOOLS import path in assistants_schema ([45b15d3](https://github.com/project-david-ai/entities-common/commit/45b15d39d194cd1dacdca49c2daa981d0f94bdeb))
+
+
+### Features
+
+* Expand VLLM_MODELS with additional Qwen, Mistral, Llama, Phi, Gemma, DeepSeek, and InternVL2 entries ([7e8a3fa](https://github.com/project-david-ai/entities-common/commit/7e8a3fa2b6339c2d63b7bcf0b21a555b3e651ddf))
+* Refactor PLATFORM_TOOLS structure to use a list and update entries ([f072d0a](https://github.com/project-david-ai/entities-common/commit/f072d0a6d78a227632bebf5222d7b1fd13e8c239))
+* Update message content schema to support multimodal content types ([b59c602](https://github.com/project-david-ai/entities-common/commit/b59c602333128e5d5deb72b31875bdea9d543608))
+
 # [0.42.0](https://github.com/project-david-ai/entities-common/compare/v0.41.0...v0.42.0) (2026-03-11)
 
 

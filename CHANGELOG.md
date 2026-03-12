@@ -1,3 +1,10 @@
+## [0.43.1](https://github.com/project-david-ai/entities-common/compare/v0.43.0...v0.43.1) (2026-03-12)
+
+
+### Bug Fixes
+
+* update PLATFORM_TOOLS import path in assistants_schema ([c205da5](https://github.com/project-david-ai/entities-common/commit/c205da5b60c48a72512ad6f33622ebd7710b9d88))
+
 # [0.43.0](https://github.com/project-david-ai/entities-common/compare/v0.42.0...v0.43.0) (2026-03-12)
 
 

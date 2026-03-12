@@ -5,7 +5,7 @@ from pydantic import BaseModel, ConfigDict, Field, HttpUrl, field_validator
 
 from projectdavid_common.schemas.vectors_schema import VectorStoreRead
 
-from ..constants.platform import PLATFORM_TOOLS
+from ..constants.tools import PLATFORM_TOOLS
 
 
 # ───────────────────────────────────────────────#

@@ -25,6 +25,8 @@ VLLM_MODELS = {
     "vllm/Qwen/Qwen3-8B": "Qwen/Qwen3-8B",
     "vllm/Qwen/Qwen3-14B": "Qwen/Qwen3-14B",
     "vllm/Qwen/Qwen3-32B": "Qwen/Qwen3-32B",
+    # ── Qwen3.5-VL (vision) ──────────────────────────────────────────────────
+    "vllm/Qwen/Qwen3.5-4B": "Qwen/Qwen3.5-4B",
     # ── Qwen2.5-VL (vision) ──────────────────────────────────────────────────
     "vllm/Qwen/Qwen2.5-VL-3B-Instruct": "Qwen/Qwen2.5-VL-3B-Instruct",
     "vllm/Qwen/Qwen2.5-VL-7B-Instruct": "Qwen/Qwen2.5-VL-7B-Instruct",

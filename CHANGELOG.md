@@ -1,3 +1,10 @@
+# [0.46.0](https://github.com/project-david-ai/entities-common/compare/v0.45.0...v0.46.0) (2026-03-13)
+
+
+### Features
+
+* Add minicpm-v:8b to AI model map ([5ba57da](https://github.com/project-david-ai/entities-common/commit/5ba57da9cb8c10769b659ac2a48fc520e5007373))
+
 # [0.45.0](https://github.com/project-david-ai/entities-common/compare/v0.44.0...v0.45.0) (2026-03-13)
 
 

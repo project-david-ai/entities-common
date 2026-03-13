@@ -1,3 +1,10 @@
+# [0.45.0](https://github.com/project-david-ai/entities-common/compare/v0.44.0...v0.45.0) (2026-03-13)
+
+
+### Features
+
+* Add Qwen3.5-4B to VLLM_MODELS map ([06de6cb](https://github.com/project-david-ai/entities-common/commit/06de6cb4ddea7b5cd626f92aef1da7f3ecd9ded9))
+
 # [0.44.0](https://github.com/project-david-ai/entities-common/compare/v0.43.1...v0.44.0) (2026-03-12)
 
 

@@ -196,6 +196,10 @@ HYPERBOLIC_MODELS = {
     "hyperbolic/Qwen/Qwen3-Coder-480B-A35B-Instruct": "Qwen/Qwen3-Coder-480B-A35B-Instruct",
     "hyperbolic/Qwen/Qwen3-235B-A22B-Instruct-2507": "Qwen/Qwen3-235B-A22B-Instruct-2507",
     "hyperbolic/Qwen/Qwen3-235B-A22B": "Qwen/Qwen3-235B-A22B",
+    "hyperbolic/qwen2-5-vl-72b-instruct": "Qwen/qwen2-5-vl-72b-instruct",
+    "hyperbolic/qwen-qwen3-vl-32b-thinking": "Qwen/qwen-qwen3-vl-32b-thinking",
+    "hyperbolic/nvidia-nemotron-nano-12b-v2-vl-bf16": "nvidia/nvidia-nemotron-nano-12b-v2-vl-bf16",
+    "hyperbolic/qwen2-5-vl-7b-instruct": "Qwen/qwen2-5-vl-7b-instruct",
     # OpenAI
     "hyperbolic/openai/gpt-oss-120b": "openai/gpt-oss-120b",
     "hyperbolic/openai/gpt-oss-20b": "openai/gpt-oss-20b",

@@ -1,3 +1,10 @@
+# [0.47.0](https://github.com/project-david-ai/entities-common/compare/v0.46.0...v0.47.0) (2026-03-13)
+
+
+### Features
+
+* Add new Qwen and Nvidia models to AI model map ([4d77fa9](https://github.com/project-david-ai/entities-common/commit/4d77fa9c631948729d9fa3b848f2b09cf8f83f59))
+
 # [0.46.0](https://github.com/project-david-ai/entities-common/compare/v0.45.0...v0.46.0) (2026-03-13)
 
 

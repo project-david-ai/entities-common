@@ -69,6 +69,7 @@ OLLAMA_MODELS = {
     "ollama/mistral:7b": "mistral:7b",
     # --- Google ---
     "ollama/gemma3:4b": "gemma3:4b",
+    "ollama/minicpm-v:8b": "minicpm-v:8b",
 }
 
 

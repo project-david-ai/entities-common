@@ -1,3 +1,10 @@
+# [0.50.0](https://github.com/project-david-ai/entities-common/compare/v0.49.0...v0.50.0) (2026-03-17)
+
+
+### Features
+
+* Refine training schemas with file metadata fields ([e4915d6](https://github.com/project-david-ai/entities-common/commit/e4915d6b99df19643913a534a720af9dfeb73463))
+
 # [0.49.0](https://github.com/project-david-ai/entities-common/compare/v0.48.0...v0.49.0) (2026-03-17)
 
 

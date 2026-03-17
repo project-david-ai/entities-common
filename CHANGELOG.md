@@ -1,3 +1,10 @@
+# [0.49.0](https://github.com/project-david-ai/entities-common/compare/v0.48.0...v0.49.0) (2026-03-17)
+
+
+### Features
+
+* Add SQLAlchemy ORM base and update dependencies ([3f8fd1e](https://github.com/project-david-ai/entities-common/commit/3f8fd1e9276521e3a59bdb121aa3029540ec2aa7))
+
 # [0.48.0](https://github.com/project-david-ai/entities-common/compare/v0.47.0...v0.48.0) (2026-03-17)
 
 

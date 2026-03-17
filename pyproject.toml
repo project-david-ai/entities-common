@@ -18,9 +18,9 @@ dependencies = [
   "pydantic",
   "typing_extensions",
   "httpx",
-  "load_dotenv"
+  "load_dotenv",
+  "sqlalchemy>=2.0"
 ]
-
 [project.optional-dependencies]
 dev = [
   "pytest"

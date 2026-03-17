@@ -1,3 +1,10 @@
+# [0.48.0](https://github.com/project-david-ai/entities-common/compare/v0.47.0...v0.48.0) (2026-03-17)
+
+
+### Features
+
+* Add training schemas for datasets, jobs, and fine-tuned models ([d8b5591](https://github.com/project-david-ai/entities-common/commit/d8b55916edc48d3a00e9d36731bcb65fc3726f21))
+
 # [0.47.0](https://github.com/project-david-ai/entities-common/compare/v0.46.0...v0.47.0) (2026-03-13)
 
 

@@ -53,6 +53,22 @@ from projectdavid_common.schemas.threads_schema import (
     ThreadReadDetailed,
     ThreadUpdate,
 )
+from projectdavid_common.schemas.training_schema import (
+    ActivateModelResponse,
+    DatasetCreate,
+    DatasetDeleted,
+    DatasetFormat,
+    DatasetList,
+    DatasetRead,
+    FineTunedModelCreate,
+    FineTunedModelDeleted,
+    FineTunedModelList,
+    FineTunedModelRead,
+    HubPushPayload,
+    TrainingJobCreate,
+    TrainingJobList,
+    TrainingJobRead,
+)
 from projectdavid_common.schemas.users_schema import (
     UserBase,
     UserCreate,
@@ -202,3 +218,19 @@ class ValidationInterface:
     AssistantMessage = AssistantMessage
     FileSearchCall = FileSearchCall
     FileSearchEnvelope = FileSearchEnvelope
+
+    # Training schemas
+    DatasetFormat = DatasetFormat
+    DatasetCreate = DatasetCreate
+    DatasetRead = DatasetRead
+    DatasetList = DatasetList
+    DatasetDeleted = DatasetDeleted
+    TrainingJobCreate = TrainingJobCreate
+    TrainingJobRead = TrainingJobRead
+    TrainingJobList = TrainingJobList
+    FineTunedModelCreate = FineTunedModelCreate
+    FineTunedModelRead = FineTunedModelRead
+    FineTunedModelList = FineTunedModelList
+    FineTunedModelDeleted = FineTunedModelDeleted
+    HubPushPayload = HubPushPayload
+    ActivateModelResponse = ActivateModelResponse

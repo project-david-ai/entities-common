@@ -17,6 +17,8 @@ class DatasetCreate(BaseModel):
     name: str = Field(..., max_length=128)
     description: Optional[str] = None
     format: DatasetFormat
+    file_id: str = Field(..., description="file_id returned by POST /v1/uploads")
+    filename: Optional[str] = Field(default=None, description="Original filename for reference")
 
 
 class DatasetRead(BaseModel):
@@ -25,7 +27,8 @@ class DatasetRead(BaseModel):
     name: str
     description: Optional[str] = None
     format: str
-    storage_path: str
+    file_id: str
+    storage_path: Optional[str] = None
     train_samples: Optional[int] = None
     eval_samples: Optional[int] = None
     config: Optional[Dict[str, Any]] = None

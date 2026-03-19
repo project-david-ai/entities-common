@@ -12,6 +12,7 @@ SUPPORTED_MIME_TYPES = {
     ".java": "text/x-java",
     ".js": "text/javascript",
     ".json": "application/json",
+    ".jsonl": "application/x-jsonlines",
     ".md": "text/markdown",
     ".pdf": "application/pdf",
     ".php": "text/x-php",

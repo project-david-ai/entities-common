@@ -1,3 +1,10 @@
+# [0.55.0](https://github.com/project-david-ai/entities-common/compare/v0.54.0...v0.55.0) (2026-03-19)
+
+
+### Features
+
+* Add TrainingQueueItem to training schema ([4077ecf](https://github.com/project-david-ai/entities-common/commit/4077ecfdbac1c4c5bce970b2219a627407723e30))
+
 # [0.54.0](https://github.com/project-david-ai/entities-common/compare/v0.53.0...v0.54.0) (2026-03-19)
 
 

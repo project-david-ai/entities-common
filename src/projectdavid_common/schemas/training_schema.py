@@ -16,8 +16,6 @@ class DatasetFormat(str, Enum):
 # ---------------------------------------------------------------------------
 # DATASET SCHEMAS
 # ---------------------------------------------------------------------------
-
-
 class DatasetCreate(BaseModel):
     name: str = Field(..., max_length=128)
     description: Optional[str] = None

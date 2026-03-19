@@ -68,6 +68,7 @@ from projectdavid_common.schemas.training_schema import (
     TrainingJobCreate,
     TrainingJobList,
     TrainingJobRead,
+    TrainingQueueItem,
     TrainingQueueList,
 )
 from projectdavid_common.schemas.users_schema import (
@@ -236,3 +237,4 @@ class ValidationInterface:
     HubPushPayload = HubPushPayload
     ActivateModelResponse = ActivateModelResponse
     TrainingQueueList = TrainingQueueList
+    TrainingQueueItem = TrainingQueueItem

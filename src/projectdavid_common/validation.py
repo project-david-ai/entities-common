@@ -68,6 +68,7 @@ from projectdavid_common.schemas.training_schema import (
     TrainingJobCreate,
     TrainingJobList,
     TrainingJobRead,
+    TrainingQueueList,
 )
 from projectdavid_common.schemas.users_schema import (
     UserBase,
@@ -234,3 +235,4 @@ class ValidationInterface:
     FineTunedModelDeleted = FineTunedModelDeleted
     HubPushPayload = HubPushPayload
     ActivateModelResponse = ActivateModelResponse
+    TrainingQueueList = TrainingQueueList

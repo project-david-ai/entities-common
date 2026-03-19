@@ -1,9 +1,9 @@
 # src/projectdavid_common/schemas/training_schema.py
 
 from enum import Enum
-from typing import Any, Dict, Optional
+from typing import Any, Dict, List, Optional
 
-from pydantic import BaseModel, Field
+from pydantic import BaseModel, ConfigDict, Field
 
 
 class DatasetFormat(str, Enum):
@@ -11,6 +11,11 @@ class DatasetFormat(str, Enum):
     alpaca = "alpaca"
     sharegpt = "sharegpt"
     jsonl = "jsonl"
+
+
+# ---------------------------------------------------------------------------
+# DATASET SCHEMAS
+# ---------------------------------------------------------------------------
 
 
 class DatasetCreate(BaseModel):
@@ -37,18 +42,22 @@ class DatasetRead(BaseModel):
     updated_at: int
     deleted_at: Optional[int] = None
 
-    class Config:
-        from_attributes = True
+    model_config = ConfigDict(from_attributes=True)
 
 
 class DatasetList(BaseModel):
-    data: list[DatasetRead]
+    data: List[DatasetRead]
     total: int
 
 
 class DatasetDeleted(BaseModel):
     deleted: bool
     dataset_id: str
+
+
+# ---------------------------------------------------------------------------
+# TRAINING JOB SCHEMAS
+# ---------------------------------------------------------------------------
 
 
 class TrainingJobCreate(BaseModel):
@@ -74,13 +83,32 @@ class TrainingJobRead(BaseModel):
     metrics: Optional[Dict[str, Any]] = None
     output_path: Optional[str] = None
 
-    class Config:
-        from_attributes = True
+    model_config = ConfigDict(from_attributes=True)
 
 
 class TrainingJobList(BaseModel):
-    data: list[TrainingJobRead]
+    data: List[TrainingJobRead]
     total: int
+
+
+# ---------------------------------------------------------------------------
+# QUEUE DIAGNOSTIC SCHEMAS (Multi-tenant secure peek)
+# ---------------------------------------------------------------------------
+
+
+class TrainingQueueItem(BaseModel):
+    job_id: str
+    user_id: str
+
+
+class TrainingQueueList(BaseModel):
+    total_in_queue: int
+    data: List[TrainingQueueItem]
+
+
+# ---------------------------------------------------------------------------
+# FINE-TUNED MODEL SCHEMAS
+# ---------------------------------------------------------------------------
 
 
 class FineTunedModelCreate(BaseModel):
@@ -108,16 +136,17 @@ class FineTunedModelRead(BaseModel):
     updated_at: int
     deleted_at: Optional[int] = None
 
-    class Config:
-        from_attributes = True
+    model_config = ConfigDict(from_attributes=True)
 
 
 class FineTunedModelList(BaseModel):
-    data: list[FineTunedModelRead]
+    data: List[FineTunedModelRead]
     total: int
 
 
 class FineTunedModelDeleted(BaseModel):
+    # Fix: model_id conflicts with Pydantic's protected namespace model_
+    model_config = ConfigDict(protected_namespaces=())
     deleted: bool
     model_id: str
 

@@ -1,3 +1,10 @@
+# [0.51.0](https://github.com/project-david-ai/entities-common/compare/v0.50.0...v0.51.0) (2026-03-19)
+
+
+### Features
+
+* Add FileService implementation and expand training schemas ([a91e03b](https://github.com/project-david-ai/entities-common/commit/a91e03b044c3af9321550b317d96ac0e845b41ee))
+
 # [0.50.0](https://github.com/project-david-ai/entities-common/compare/v0.49.0...v0.50.0) (2026-03-17)
 
 

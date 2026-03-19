@@ -1,3 +1,10 @@
+# [0.53.0](https://github.com/project-david-ai/entities-common/compare/v0.52.0...v0.53.0) (2026-03-19)
+
+
+### Features
+
+* Add TrainingQueueList schema to validation imports and constants ([17c24fa](https://github.com/project-david-ai/entities-common/commit/17c24fa1e74aaf1e8c287dab1d9828202724316c))
+
 # [0.52.0](https://github.com/project-david-ai/entities-common/compare/v0.51.0...v0.52.0) (2026-03-19)
 
 

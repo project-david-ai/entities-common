@@ -1,3 +1,10 @@
+# [0.54.0](https://github.com/project-david-ai/entities-common/compare/v0.53.0...v0.54.0) (2026-03-19)
+
+
+### Features
+
+* Add JSON Linesfeat MIME: Add MIME type mapping type to constants for `.jsonl` files ([63bbc67](https://github.com/project-david-ai/entities-common/commit/63bbc679f1cbd336cb8285de5c5f588985171c32))
+
 # [0.53.0](https://github.com/project-david-ai/entities-common/compare/v0.52.0...v0.53.0) (2026-03-19)
 
 

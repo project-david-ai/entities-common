@@ -1,3 +1,11 @@
+## [0.55.1](https://github.com/project-david-ai/entities-common/compare/v0.55.0...v0.55.1) (2026-03-20)
+
+
+### Bug Fixes
+
+* Update AI model compatibility dict ([cc78091](https://github.com/project-david-ai/entities-common/commit/cc780912f7009e3523ab759129de34aa5bbe7647))
+* Update training schema with `updated_at` and `deleted_at` fields to align with SQLAlchemy model changes ([a94d571](https://github.com/project-david-ai/entities-common/commit/a94d571340649c32d9a60efebc353949c79e2423))
+
 # [0.55.0](https://github.com/project-david-ai/entities-common/compare/v0.54.0...v0.55.0) (2026-03-19)
 
 

@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "projectdavid_common"
-version = "0.19.1"
+version = "0.54.0"
 description = "Common shared custom packages"
 readme = "README.md"
 authors = [
@@ -17,9 +17,10 @@ requires-python = ">=3.10"
 dependencies = [
   "pydantic",
   "typing_extensions",
-  "httpx"
+  "httpx",
+  "load_dotenv",
+  "sqlalchemy>=2.0"
 ]
-
 [project.optional-dependencies]
 dev = [
   "pytest"

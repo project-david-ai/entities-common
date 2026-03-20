@@ -1,7 +1,7 @@
 # src/projectdavid_common/utilities.py
-# Use relative imports for modules within your package.
 from projectdavid_common.utilities.identifier_service import IdentifierService
 from projectdavid_common.utilities.logging_service import LoggingUtility
+from projectdavid_common.utilities.tool_validator import ToolValidator
 
 
 class UtilsInterface:
@@ -16,3 +16,4 @@ class UtilsInterface:
 
     IdentifierService = IdentifierService
     LoggingUtility = LoggingUtility
+    ToolValidator = ToolValidator

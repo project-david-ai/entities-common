@@ -20,6 +20,10 @@ class ActionBase(BaseModel):
     tool_call_id: Optional[str] = None
     turn_index: Optional[int] = 0
 
+    # Telemetry
+    decision: Optional[Dict[str, Any]] = None
+    confidence_score: Optional[float] = None
+
     model_config = ConfigDict(from_attributes=True)
 
 
@@ -45,6 +49,9 @@ class ActionCreate(BaseModel):
     tool_call_id: Optional[str] = None
     turn_index: Optional[int] = 0
 
+    # [NEW] Telemetry Fields (Passed from Worker/Router)
+    decision: Optional[Dict[str, Any]] = None
+
     @field_validator("tool_name", mode="before")
     @classmethod
     def validate_tool_fields(cls, v: Optional[str]) -> Optional[str]:
@@ -60,6 +67,11 @@ class ActionCreate(BaseModel):
                 "tool_call_id": "call_abc123",
                 "function_args": {"arg1": "value1"},
                 "status": "pending",
+                "decision": {
+                    "reason": "User requested flight times explicitly.",
+                    "confidence": 0.95,
+                    "selected_tool": "get_flight_times",
+                },
             }
         }
     )
@@ -74,6 +86,10 @@ class ActionRead(BaseModel):
     # New Fields
     tool_call_id: Optional[str] = None
     turn_index: Optional[int] = None
+
+    # [NEW] Telemetry Fields (Exposed to Client/Dashboard)
+    decision: Optional[Dict[str, Any]] = None
+    confidence_score: Optional[float] = None
 
     triggered_at: Optional[str] = None
     expires_at: Optional[str] = None

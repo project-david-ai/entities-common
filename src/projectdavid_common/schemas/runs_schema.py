@@ -9,7 +9,6 @@ from typing import Any, Dict, List, Literal, Optional
 from pydantic import BaseModel, ConfigDict, Field
 
 from projectdavid_common.schemas.actions_schema import ActionRead
-from projectdavid_common.schemas.tools_schema import Tool, ToolRead
 
 
 # --------------------------------------------------------------------------- #
@@ -65,7 +64,6 @@ class Run(BaseModel):
     status: RunStatus
     thread_id: str
     tool_choice: str
-    tools: List[Tool]
     # Accept 'auto' or None on read
     truncation_strategy: Optional[TruncationStrategy] = None
     usage: Optional[Any]
@@ -106,7 +104,6 @@ class RunCreate(BaseModel):
     status: RunStatus = RunStatus.pending
     thread_id: str
     tool_choice: str = "none"
-    tools: List[Tool] = Field(default_factory=list)
     # Optional so callers can omit and let DB default 'auto' apply
     truncation_strategy: Optional[TruncationStrategy] = None
     usage: Optional[Any] = None
@@ -143,7 +140,6 @@ class RunReadDetailed(BaseModel):
     status: RunStatus
     thread_id: str
     tool_choice: Optional[str] = None
-    tools: List[ToolRead]
     # Accept 'auto' or None on read
     truncation_strategy: Optional[TruncationStrategy] = None
     usage: Optional[Any] = None

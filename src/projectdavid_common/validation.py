@@ -53,13 +53,23 @@ from projectdavid_common.schemas.threads_schema import (
     ThreadReadDetailed,
     ThreadUpdate,
 )
-from projectdavid_common.schemas.tools_schema import (
-    Tool,
-    ToolCreate,
-    ToolFunction,
-    ToolList,
-    ToolRead,
-    ToolUpdate,
+from projectdavid_common.schemas.training_schema import (
+    ActivateModelResponse,
+    DatasetCreate,
+    DatasetDeleted,
+    DatasetFormat,
+    DatasetList,
+    DatasetRead,
+    FineTunedModelCreate,
+    FineTunedModelDeleted,
+    FineTunedModelList,
+    FineTunedModelRead,
+    HubPushPayload,
+    TrainingJobCreate,
+    TrainingJobList,
+    TrainingJobRead,
+    TrainingQueueItem,
+    TrainingQueueList,
 )
 from projectdavid_common.schemas.users_schema import (
     UserBase,
@@ -159,12 +169,6 @@ class ValidationInterface:
     ThreadDeleted = ThreadDeleted
 
     # Tools schemas
-    ToolFunction = ToolFunction
-    Tool = Tool
-    ToolCreate = ToolCreate
-    ToolRead = ToolRead
-    ToolUpdate = ToolUpdate
-    ToolList = ToolList
 
     # Users schemas
     UserBase = UserBase
@@ -216,3 +220,21 @@ class ValidationInterface:
     AssistantMessage = AssistantMessage
     FileSearchCall = FileSearchCall
     FileSearchEnvelope = FileSearchEnvelope
+
+    # Training schemas
+    DatasetFormat = DatasetFormat
+    DatasetCreate = DatasetCreate
+    DatasetRead = DatasetRead
+    DatasetList = DatasetList
+    DatasetDeleted = DatasetDeleted
+    TrainingJobCreate = TrainingJobCreate
+    TrainingJobRead = TrainingJobRead
+    TrainingJobList = TrainingJobList
+    FineTunedModelCreate = FineTunedModelCreate
+    FineTunedModelRead = FineTunedModelRead
+    FineTunedModelList = FineTunedModelList
+    FineTunedModelDeleted = FineTunedModelDeleted
+    HubPushPayload = HubPushPayload
+    ActivateModelResponse = ActivateModelResponse
+    TrainingQueueList = TrainingQueueList
+    TrainingQueueItem = TrainingQueueItem

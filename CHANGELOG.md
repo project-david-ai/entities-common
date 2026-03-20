@@ -1,3 +1,376 @@
+# [0.54.0](https://github.com/project-david-ai/entities-common/compare/v0.53.0...v0.54.0) (2026-03-19)
+
+
+### Features
+
+* Add JSON Linesfeat MIME: Add MIME type mapping type to constants for `.jsonl` files ([63bbc67](https://github.com/project-david-ai/entities-common/commit/63bbc679f1cbd336cb8285de5c5f588985171c32))
+
+# [0.53.0](https://github.com/project-david-ai/entities-common/compare/v0.52.0...v0.53.0) (2026-03-19)
+
+
+### Features
+
+* Add TrainingQueueList schema to validation imports and constants ([17c24fa](https://github.com/project-david-ai/entities-common/commit/17c24fa1e74aaf1e8c287dab1d9828202724316c))
+
+# [0.52.0](https://github.com/project-david-ai/entities-common/compare/v0.51.0...v0.52.0) (2026-03-19)
+
+
+### Features
+
+* Add FileService implementation and expand training schemas ([f28cb42](https://github.com/project-david-ai/entities-common/commit/f28cb42ef0707962a857c39430e04dd5786baa4b))
+
+# [0.51.0](https://github.com/project-david-ai/entities-common/compare/v0.50.0...v0.51.0) (2026-03-19)
+
+
+### Features
+
+* Add FileService implementation and expand training schemas ([a91e03b](https://github.com/project-david-ai/entities-common/commit/a91e03b044c3af9321550b317d96ac0e845b41ee))
+
+# [0.50.0](https://github.com/project-david-ai/entities-common/compare/v0.49.0...v0.50.0) (2026-03-17)
+
+
+### Features
+
+* Refine training schemas with file metadata fields ([e4915d6](https://github.com/project-david-ai/entities-common/commit/e4915d6b99df19643913a534a720af9dfeb73463))
+
+# [0.49.0](https://github.com/project-david-ai/entities-common/compare/v0.48.0...v0.49.0) (2026-03-17)
+
+
+### Features
+
+* Add SQLAlchemy ORM base and update dependencies ([3f8fd1e](https://github.com/project-david-ai/entities-common/commit/3f8fd1e9276521e3a59bdb121aa3029540ec2aa7))
+
+# [0.48.0](https://github.com/project-david-ai/entities-common/compare/v0.47.0...v0.48.0) (2026-03-17)
+
+
+### Features
+
+* Add training schemas for datasets, jobs, and fine-tuned models ([d8b5591](https://github.com/project-david-ai/entities-common/commit/d8b55916edc48d3a00e9d36731bcb65fc3726f21))
+
+# [0.47.0](https://github.com/project-david-ai/entities-common/compare/v0.46.0...v0.47.0) (2026-03-13)
+
+
+### Features
+
+* Add new Qwen and Nvidia models to AI model map ([4d77fa9](https://github.com/project-david-ai/entities-common/commit/4d77fa9c631948729d9fa3b848f2b09cf8f83f59))
+
+# [0.46.0](https://github.com/project-david-ai/entities-common/compare/v0.45.0...v0.46.0) (2026-03-13)
+
+
+### Features
+
+* Add minicpm-v:8b to AI model map ([5ba57da](https://github.com/project-david-ai/entities-common/commit/5ba57da9cb8c10769b659ac2a48fc520e5007373))
+
+# [0.45.0](https://github.com/project-david-ai/entities-common/compare/v0.44.0...v0.45.0) (2026-03-13)
+
+
+### Features
+
+* Add Qwen3.5-4B to VLLM_MODELS map ([06de6cb](https://github.com/project-david-ai/entities-common/commit/06de6cb4ddea7b5cd626f92aef1da7f3ecd9ded9))
+
+# [0.44.0](https://github.com/project-david-ai/entities-common/compare/v0.43.1...v0.44.0) (2026-03-12)
+
+
+### Features
+
+* Add attachments support and refine Message schema fields ([b422001](https://github.com/project-david-ai/entities-common/commit/b422001fb5433a382e81957a6278a7287e83ef25))
+
+## [0.43.1](https://github.com/project-david-ai/entities-common/compare/v0.43.0...v0.43.1) (2026-03-12)
+
+
+### Bug Fixes
+
+* update PLATFORM_TOOLS import path in assistants_schema ([c205da5](https://github.com/project-david-ai/entities-common/commit/c205da5b60c48a72512ad6f33622ebd7710b9d88))
+
+# [0.43.0](https://github.com/project-david-ai/entities-common/compare/v0.42.0...v0.43.0) (2026-03-12)
+
+
+### Bug Fixes
+
+* update PLATFORM_TOOLS import path in assistants_schema ([45b15d3](https://github.com/project-david-ai/entities-common/commit/45b15d39d194cd1dacdca49c2daa981d0f94bdeb))
+
+
+### Features
+
+* Expand VLLM_MODELS with additional Qwen, Mistral, Llama, Phi, Gemma, DeepSeek, and InternVL2 entries ([7e8a3fa](https://github.com/project-david-ai/entities-common/commit/7e8a3fa2b6339c2d63b7bcf0b21a555b3e651ddf))
+* Refactor PLATFORM_TOOLS structure to use a list and update entries ([f072d0a](https://github.com/project-david-ai/entities-common/commit/f072d0a6d78a227632bebf5222d7b1fd13e8c239))
+* Update message content schema to support multimodal content types ([b59c602](https://github.com/project-david-ai/entities-common/commit/b59c602333128e5d5deb72b31875bdea9d543608))
+
+# [0.42.0](https://github.com/project-david-ai/entities-common/compare/v0.41.0...v0.42.0) (2026-03-11)
+
+
+### Features
+
+* Add VLLM_MODELS to model map. ([3e4d811](https://github.com/project-david-ai/entities-common/commit/3e4d8117e0acbe58ae0c37d3c7a3ffd7b177363b))
+
+# [0.41.0](https://github.com/project-david-ai/entities-common/compare/v0.40.1...v0.41.0) (2026-03-07)
+
+
+### Features
+
+* add optional owner_id to Thread schemas and update participant_ids description ([2980ce5](https://github.com/project-david-ai/entities-common/commit/2980ce5cd4f6dd093a0a711848e492a3e9932d27))
+
+## [0.40.1](https://github.com/project-david-ai/entities-common/compare/v0.40.0...v0.40.1) (2026-03-07)
+
+
+### Bug Fixes
+
+* remove unused service_token field from StreamRequest schema ([354eda1](https://github.com/project-david-ai/entities-common/commit/354eda1c8de29c1747104fe655d339d32e3189ab))
+
+# [0.40.0](https://github.com/project-david-ai/entities-common/compare/v0.39.0...v0.40.0) (2026-03-07)
+
+
+### Features
+
+* add optional service_token to StreamRequest schema ([d75c18b](https://github.com/project-david-ai/entities-common/commit/d75c18b99a3cc443ee3c5385a0cf287cc046e41c))
+
+# [0.39.0](https://github.com/project-david-ai/entities-common/compare/v0.38.0...v0.39.0) (2026-03-06)
+
+
+### Features
+
+* add optional owner_id to AssistantRead schema. ([8d639b5](https://github.com/project-david-ai/entities-common/commit/8d639b59f91c9c5fb61e0eff878ffe6033d65b59))
+
+# [0.38.0](https://github.com/project-david-ai/entities-common/compare/v0.37.0...v0.38.0) (2026-03-06)
+
+
+### Features
+
+* add optional meta_data field to StreamRequest schema ([88e22b6](https://github.com/project-david-ai/entities-common/commit/88e22b6c8ea7bc725c94296ed5e7bfabbaff51bd))
+
+# [0.37.0](https://github.com/project-david-ai/entities-common/compare/v0.36.0...v0.37.0) (2026-03-04)
+
+
+### Features
+
+* add OLLAMA_MODELS registry with local inference routing prefix ([6d2aff4](https://github.com/project-david-ai/entities-common/commit/6d2aff4c135e741d011a0054c92887088751812e))
+
+# [0.36.0](https://github.com/project-david-ai/entities-common/compare/v0.35.0...v0.36.0) (2026-03-03)
+
+
+### Features
+
+* Add file_search to PLATFORM_TOOLS ([68db291](https://github.com/project-david-ai/entities-common/commit/68db2912a4508b827a8567a2c2d4440612345955))
+
+# [0.35.0](https://github.com/project-david-ai/entities-common/compare/v0.34.0...v0.35.0) (2026-02-27)
+
+
+### Features
+
+* Add batfish_schema.py ([c6cf308](https://github.com/project-david-ai/entities-common/commit/c6cf308acf12d7d528eb222c03065fdbe15eef40))
+
+# [0.34.0](https://github.com/project-david-ai/entities-common/compare/v0.33.0...v0.34.0) (2026-02-27)
+
+
+### Features
+
+* Add batfish_schema.py ([c314016](https://github.com/project-david-ai/entities-common/commit/c314016739d01d13fe4a8c0715cc884dbfa0585b))
+
+# [0.33.0](https://github.com/project-david-ai/entities-common/compare/v0.32.0...v0.33.0) (2026-02-27)
+
+
+### Features
+
+* Add  generate_snapshot_id ([46c94bc](https://github.com/project-david-ai/entities-common/commit/46c94bc9c7b930d5865868c6c119aea0e7095358))
+
+# [0.32.0](https://github.com/project-david-ai/entities-common/compare/v0.31.0...v0.32.0) (2026-02-27)
+
+
+### Features
+
+* new batfish_schema.py ([9f67506](https://github.com/project-david-ai/entities-common/commit/9f67506ca2c97699e4262e4e98c96b03c54a1ee8))
+
+# [0.31.0](https://github.com/project-david-ai/entities-common/compare/v0.30.0...v0.31.0) (2026-02-27)
+
+
+### Features
+
+* batfish_schema.py ([c718127](https://github.com/project-david-ai/entities-common/commit/c71812786776a6d3aed7a4c7f99092ee04aa56ad))
+
+# [0.30.0](https://github.com/project-david-ai/entities-common/compare/v0.29.1...v0.30.0) (2026-02-25)
+
+
+### Features
+
+* add PLATFORM_TOOLS in plaform_tools.py ([e14cd67](https://github.com/project-david-ai/entities-common/commit/e14cd671bc0044dd8c6fa045e9bf41d0c0087e0f))
+
+## [0.29.1](https://github.com/project-david-ai/entities-common/compare/v0.29.0...v0.29.1) (2026-02-24)
+
+
+### Bug Fixes
+
+* scope inventory to user_id, remove assistant_id partition key ([d634754](https://github.com/project-david-ai/entities-common/commit/d63475452609264614097dabd0365d9ac7c43c93))
+
+# [0.29.0](https://github.com/project-david-ai/entities-common/compare/v0.28.0...v0.29.0) (2026-02-24)
+
+
+### Features
+
+* add engineer field to Assistant validation schemas (Create, Read, Update) ([8ec24f5](https://github.com/project-david-ai/entities-common/commit/8ec24f5e53b1af118419a7330412e99c2e3db60e))
+
+# [0.28.0](https://github.com/project-david-ai/entities-common/compare/v0.27.1...v0.28.0) (2026-02-24)
+
+
+### Features
+
+* add engineer field to Assistant validation schemas (Create, Read, Update) ([faeace7](https://github.com/project-david-ai/entities-common/commit/faeace7e9add252c7fb36495fd13c302f19276a5))
+
+## [0.27.1](https://github.com/project-david-ai/entities-common/compare/v0.27.0...v0.27.1) (2026-02-23)
+
+
+### Bug Fixes
+
+* remove 'provider' field from StreamRequest schema ([7ff7d2f](https://github.com/project-david-ai/entities-common/commit/7ff7d2fc1c51aa4c0c230503a3310ca2e16d9c7d))
+
+# [0.27.0](https://github.com/frankie336/entities_common/compare/v0.26.0...v0.27.0) (2026-02-12)
+
+
+### Features
+
+* Add together-ai/Qwen/Qwen3-Next-80B-A3B-Instruct/deep-research to routing. ([b02afd4](https://github.com/frankie336/entities_common/commit/b02afd474f2a821ba56047caa8746af4d40ace0b))
+
+# [0.26.0](https://github.com/frankie336/entities_common/compare/v0.25.0...v0.26.0) (2026-02-11)
+
+
+### Bug Fixes
+
+* Reserve platform tool names ([1b2cd3d](https://github.com/frankie336/entities_common/commit/1b2cd3d04fe6c782ebebb661060332734a55a7c6))
+
+
+### Features
+
+* Add deep_research toggle to assistants_schema.py ([496786c](https://github.com/frankie336/entities_common/commit/496786cc0607a4dc52bfdbb21c9e63d0a2b3d4e9))
+* Add deep_research toggle to assistants_schema.py ([dad34db](https://github.com/frankie336/entities_common/commit/dad34dba559be6e025e0da84c85e881c9330fa19))
+* Add deep_research toggle to assistants_schema.py ([6b78732](https://github.com/frankie336/entities_common/commit/6b78732dbcc39bee44df73d2adfb113d1a0a9518))
+
+# [0.25.0](https://github.com/frankie336/entities_common/compare/v0.24.1...v0.25.0) (2026-02-10)
+
+
+### Features
+
+* Add web_access param to assistants_schema.py ([1865987](https://github.com/frankie336/entities_common/commit/1865987ff5c744c7c1c24342eacb8969f99a74e9))
+* Add web_access param to assistants_schema.py ([38c4565](https://github.com/frankie336/entities_common/commit/38c4565d69c19a3fea8a81a3dd407b84a6db1cff))
+* Add web_access param to assistants_schema.py ([c314317](https://github.com/frankie336/entities_common/commit/c3143176cde9e8bd6ee84b4e2adc90a30719a361))
+
+## [0.24.1](https://github.com/frankie336/entities_common/compare/v0.24.0...v0.24.1) (2026-02-10)
+
+
+### Bug Fixes
+
+* update TOGETHER_AI_MODELS ([bb53e69](https://github.com/frankie336/entities_common/commit/bb53e698832ac1d5940f54dea87351e5edb26094))
+
+# [0.24.0](https://github.com/frankie336/entities_common/compare/v0.23.1...v0.24.0) (2026-02-10)
+
+
+### Features
+
+* Add DeviceIngest schema ([6fad231](https://github.com/frankie336/entities_common/commit/6fad2316a2c5464de0438ff8e778d9676f745e2d))
+
+## [0.23.1](https://github.com/frankie336/entities_common/compare/v0.23.0...v0.23.1) (2026-02-08)
+
+
+### Bug Fixes
+
+* turn off logging ([3052836](https://github.com/frankie336/entities_common/commit/305283621ce676c2557a9bfc9d77d00b30369911))
+
+# [0.23.0](https://github.com/frankie336/entities_common/compare/v0.22.0...v0.23.0) (2026-02-07)
+
+
+### Features
+
+* Implement ToolValidator ([864fa6a](https://github.com/frankie336/entities_common/commit/864fa6af4ea0772a1526cadc375ee43a2814d48d))
+* Implement ToolValidator ([ab20f5b](https://github.com/frankie336/entities_common/commit/ab20f5b32e6fd8b09f0ec76193b5f52fa933b7c8))
+
+# [0.22.0](https://github.com/frankie336/entities_common/compare/v0.21.9...v0.22.0) (2026-02-05)
+
+
+### Features
+
+* add decision_telemetry, agent_mode to assistants_schema.py ([8768298](https://github.com/frankie336/entities_common/commit/8768298c0669c86b6549d3ebf7cb85ea888a5c63))
+
+## [0.21.9](https://github.com/frankie336/entities_common/compare/v0.21.8...v0.21.9) (2026-02-01)
+
+
+### Bug Fixes
+
+* Resolve issues ActionRead decision_payload renamed to decision ([a073954](https://github.com/frankie336/entities_common/commit/a0739549e9d498aed7e1b11b39f22e8748be3b44))
+
+## [0.21.8](https://github.com/frankie336/entities_common/compare/v0.21.7...v0.21.8) (2026-01-31)
+
+
+### Bug Fixes
+
+* Add decision_payload and confidence_score to ActionRead schema ([61d1e37](https://github.com/frankie336/entities_common/commit/61d1e379ed61e5617ada7c04fcd76bd9340c4fe1))
+
+## [0.21.7](https://github.com/frankie336/entities_common/compare/v0.21.6...v0.21.7) (2026-01-29)
+
+
+### Bug Fixes
+
+* Add many new TogetherAI models to TOGETHER_AI_MODELS ([140b7aa](https://github.com/frankie336/entities_common/commit/140b7aababca215458ad643b7e2edb58bb839cbe))
+
+## [0.21.6](https://github.com/frankie336/entities_common/compare/v0.21.5...v0.21.6) (2026-01-27)
+
+
+### Bug Fixes
+
+* Update AI model compatibility dict ([e7c3334](https://github.com/frankie336/entities_common/commit/e7c3334f9dcf7150c3df01ff464a9d55586733a5))
+
+## [0.21.5](https://github.com/frankie336/entities_common/compare/v0.21.4...v0.21.5) (2026-01-25)
+
+
+### Bug Fixes
+
+* Remove Tools schema ([85698bc](https://github.com/frankie336/entities_common/commit/85698bc2f895ae3100f01d4c91bd6e0caba72945))
+
+## [0.21.4](https://github.com/frankie336/entities_common/compare/v0.21.3...v0.21.4) (2026-01-25)
+
+
+### Bug Fixes
+
+* refactor tools field in AssistantUpdate ([11cb730](https://github.com/frankie336/entities_common/commit/11cb73097b21350ff10089b2feda523ab9edf115))
+
+## [0.21.3](https://github.com/frankie336/entities_common/compare/v0.21.2...v0.21.3) (2026-01-25)
+
+
+### Bug Fixes
+
+* Update TOGETHER_AI_MODELS dictionary ([05a2166](https://github.com/frankie336/entities_common/commit/05a21661c29f4ed8819b0a9781a186a09b3d2ace))
+
+## [0.21.2](https://github.com/frankie336/entities_common/compare/v0.21.1...v0.21.2) (2026-01-24)
+
+
+### Bug Fixes
+
+* Update TOGETHER_AI_MODELS dictionary ([7ebe3e6](https://github.com/frankie336/entities_common/commit/7ebe3e698a45420efcc446a5ad95b30e1bb99e52))
+
+## [0.21.1](https://github.com/frankie336/entities_common/compare/v0.21.0...v0.21.1) (2026-01-19)
+
+
+### Bug Fixes
+
+* Update messages_schema.py with too_call_id param ([51f3b2f](https://github.com/frankie336/entities_common/commit/51f3b2f617775624a3e0c0244f74ef900bde46e9))
+* Update messages_schema.py with too_call_id param ([5988bda](https://github.com/frankie336/entities_common/commit/5988bdad22d333c000d93050dfe3399c050cc14b))
+
+# [0.21.0](https://github.com/frankie336/entities_common/compare/v0.20.0...v0.21.0) (2026-01-19)
+
+
+### Bug Fixes
+
+* Update actions_schema.py with too_call_id param ([80c967f](https://github.com/frankie336/entities_common/commit/80c967f5652ad92dda7de46eeb42c999bb33aaa1))
+
+
+### Features
+
+* Remove support for proprietary models. ([ef340ca](https://github.com/frankie336/entities_common/commit/ef340caefdb4c28012d5d887e06b058c74b93c8d))
+
+# [0.20.0](https://github.com/frankie336/entities_common/compare/v0.19.1...v0.20.0) (2026-01-17)
+
+
+### Features
+
+* Add support for models: ([9c94fda](https://github.com/frankie336/entities_common/commit/9c94fda988da656038cf1f5f7077d38387fb3eaa))
+
 ## [0.19.1](https://github.com/frankie336/entities_common/compare/v0.19.0...v0.19.1) (2026-01-17)
 
 

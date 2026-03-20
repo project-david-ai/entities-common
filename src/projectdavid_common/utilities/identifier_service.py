@@ -71,6 +71,11 @@ class IdentifierService:
         return IdentifierService.generate_id("vect")
 
     @staticmethod
+    def generate_snapshot_id() -> str:
+        """Generate valid UUID4 string for Qdrant compatibility"""
+        return IdentifierService.generate_id("snap")
+
+    @staticmethod
     def generate_file_id() -> str:
         """Generate valid UUID4 string for Qdrant compatibility"""
         return IdentifierService.generate_id("file")

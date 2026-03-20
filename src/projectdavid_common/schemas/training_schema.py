@@ -16,6 +16,8 @@ class DatasetFormat(str, Enum):
 # ---------------------------------------------------------------------------
 # DATASET SCHEMAS
 # ---------------------------------------------------------------------------
+
+
 class DatasetCreate(BaseModel):
     name: str = Field(..., max_length=128)
     description: Optional[str] = None
@@ -74,6 +76,10 @@ class TrainingJobRead(BaseModel):
     config: Optional[Dict[str, Any]] = None
     status: str
     created_at: int
+    # FIXED: Added to match the updated SQLAlchemy model
+    updated_at: int
+    deleted_at: Optional[int] = None
+
     started_at: Optional[int] = None
     completed_at: Optional[int] = None
     failed_at: Optional[int] = None

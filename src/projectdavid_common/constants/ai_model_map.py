@@ -12,6 +12,8 @@
 # ------------------------------------------------
 
 VLLM_MODELS = {
+    # ── Fine Tuned ─────────────────────────────────────────────────────
+    "vllm/david-ft": "david-ft",
     # ── Qwen2.5 Instruct ─────────────────────────────────────────────────────
     "vllm/Qwen/Qwen2.5-1.5B-Instruct": "Qwen/Qwen2.5-1.5B-Instruct",  # text only, no tool calling
     "vllm/Qwen/Qwen2.5-3B-Instruct": "Qwen/Qwen2.5-3B-Instruct",  # recommended entry point

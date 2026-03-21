@@ -1,3 +1,10 @@
+# [0.57.0](https://github.com/project-david-ai/entities-common/compare/v0.56.0...v0.57.0) (2026-03-21)
+
+
+### Features
+
+* Add offline ([f635226](https://github.com/project-david-ai/entities-common/commit/f635226d5ed0230f54d24c649e70a1ec2f6c9841))
+
 # [0.56.0](https://github.com/project-david-ai/entities-common/compare/v0.55.1...v0.56.0) (2026-03-20)
 
 

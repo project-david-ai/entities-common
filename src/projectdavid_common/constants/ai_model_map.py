@@ -11,9 +11,11 @@
 # Each dictionary acts as the "driver" for that vendor
 # ------------------------------------------------
 
+
 VLLM_MODELS = {
-    # ── Fine Tuned ─────────────────────────────────────────────────────
+    # ── Vlm & Fine Tuned ─────────────────────────────────────────────────────
     "vllm/david-ft": "david-ft",
+    "vllm/unsloth/qwen2.5-1.5b-instruct-unsloth-bnb-4bit": "unsloth/qwen2.5-1.5b-instruct-unsloth-bnb-4bit",
     # ── Qwen2.5 Instruct ─────────────────────────────────────────────────────
     "vllm/Qwen/Qwen2.5-1.5B-Instruct": "Qwen/Qwen2.5-1.5B-Instruct",  # text only, no tool calling
     "vllm/Qwen/Qwen2.5-3B-Instruct": "Qwen/Qwen2.5-3B-Instruct",  # recommended entry point

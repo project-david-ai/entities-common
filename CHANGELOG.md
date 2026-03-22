@@ -1,3 +1,10 @@
+# [0.58.0](https://github.com/project-david-ai/entities-common/compare/v0.57.0...v0.58.0) (2026-03-22)
+
+
+### Features
+
+* Add fine-tuned model key `vllm/david-ft` to `VLLM_MODELS` in AI model map ([e37dea6](https://github.com/project-david-ai/entities-common/commit/e37dea64dc71e7540d5812b72794286f9d7cbf44))
+
 # [0.57.0](https://github.com/project-david-ai/entities-common/compare/v0.56.0...v0.57.0) (2026-03-21)
 
 

@@ -24,6 +24,7 @@ class StatusEnum(str, Enum):
     processing = "processing"
     expired = "expired"
     retrying = "retrying"
+    offline = "offline"
 
 
 PLATFORM_TOOLS = [

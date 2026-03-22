@@ -1,3 +1,25 @@
+# [0.56.0](https://github.com/project-david-ai/entities-common/compare/v0.55.1...v0.56.0) (2026-03-20)
+
+
+### Features
+
+* Add fine-tuned model key `vllm/david-ft` to `VLLM_MODELS` in AI model map ([fb58a79](https://github.com/project-david-ai/entities-common/commit/fb58a79066e74436f4780288650ccede1d075c01))
+
+## [0.55.1](https://github.com/project-david-ai/entities-common/compare/v0.55.0...v0.55.1) (2026-03-20)
+
+
+### Bug Fixes
+
+* Update AI model compatibility dict ([cc78091](https://github.com/project-david-ai/entities-common/commit/cc780912f7009e3523ab759129de34aa5bbe7647))
+* Update training schema with `updated_at` and `deleted_at` fields to align with SQLAlchemy model changes ([a94d571](https://github.com/project-david-ai/entities-common/commit/a94d571340649c32d9a60efebc353949c79e2423))
+
+# [0.55.0](https://github.com/project-david-ai/entities-common/compare/v0.54.0...v0.55.0) (2026-03-19)
+
+
+### Features
+
+* Add TrainingQueueItem to training schema ([4077ecf](https://github.com/project-david-ai/entities-common/commit/4077ecfdbac1c4c5bce970b2219a627407723e30))
+
 # [0.54.0](https://github.com/project-david-ai/entities-common/compare/v0.53.0...v0.54.0) (2026-03-19)
 
 

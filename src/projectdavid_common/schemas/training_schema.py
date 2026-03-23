@@ -76,7 +76,6 @@ class TrainingJobRead(BaseModel):
     config: Optional[Dict[str, Any]] = None
     status: str
     created_at: int
-    # FIXED: Added to match the updated SQLAlchemy model
     updated_at: int
     deleted_at: Optional[int] = None
 
@@ -149,7 +148,6 @@ class FineTunedModelList(BaseModel):
 
 
 class FineTunedModelDeleted(BaseModel):
-    # Fix: model_id conflicts with Pydantic's protected namespace model_
     model_config = ConfigDict(protected_namespaces=())
     deleted: bool
     model_id: str
@@ -163,6 +161,25 @@ class HubPushPayload(BaseModel):
 
 
 class ActivateModelResponse(BaseModel):
-    activated: str
-    vllm_model_id: str
+    """
+    Returned by both activate_model() and activate_base_model().
+
+    Fields:
+        status:               'deploying' or 'deploying_standard'
+        model_id:             The model being deployed
+        node:                 Ray node ID (hex) the deployment is scheduled on
+        tensor_parallel_size: Number of GPUs the model is sharded across
+        next_step:            Human-readable description of what happens next
+    """
+
+    model_config = ConfigDict(protected_namespaces=())
+
+    status: str
+    model_id: str
+    node: str
+    tensor_parallel_size: int = Field(
+        default=1,
+        ge=1,
+        description="Number of GPUs this deployment is sharded across.",
+    )
     next_step: str

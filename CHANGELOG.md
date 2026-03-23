@@ -1,3 +1,10 @@
+# [0.60.0](https://github.com/project-david-ai/entities-common/compare/v0.59.0...v0.60.0) (2026-03-23)
+
+
+### Features
+
+* Add stream bool to stream_schema.py ([1b0d9ae](https://github.com/project-david-ai/entities-common/commit/1b0d9ae4784476369e3f165a5aac94a9b6540171))
+
 # [0.59.0](https://github.com/project-david-ai/entities-common/compare/v0.58.0...v0.59.0) (2026-03-23)
 
 

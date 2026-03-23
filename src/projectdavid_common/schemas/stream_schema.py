@@ -1,4 +1,5 @@
-# src/projectdavid_common/schemas/stream_schema.py#
+# src/projectdavid_common/schemas/stream_schema.py
+
 from typing import Any, Dict, Optional
 
 from pydantic import (
@@ -21,6 +22,12 @@ class StreamRequest(BaseModel):
     assistant_id: str
     content: Optional[str] = None
     meta_data: Optional[Dict[str, Any]] = None
+
+    # When True (default) the endpoint returns a text/event-stream SSE response.
+    # When False the endpoint buffers the full response server-side and returns
+    # a single JSON object. All side effects (tool calls, file generation, status
+    # events) execute identically in both modes — only the response shape differs.
+    stream: bool = True
 
     @field_validator("model")
     @classmethod

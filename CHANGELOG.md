@@ -1,3 +1,10 @@
+# [0.59.0](https://github.com/project-david-ai/entities-common/compare/v0.58.0...v0.59.0) (2026-03-23)
+
+
+### Features
+
+* Add tensor_parallel_size to ActivateModelResponse and update model_config ([72ed4a7](https://github.com/project-david-ai/entities-common/commit/72ed4a700a06a044aba3506b029c625f2d7d81cd))
+
 # [0.58.0](https://github.com/project-david-ai/entities-common/compare/v0.57.0...v0.58.0) (2026-03-22)
 
 

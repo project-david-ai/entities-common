@@ -34,6 +34,12 @@ from projectdavid_common.schemas.messages_schema import (
     MessageUpdate,
     ToolMessageCreate,
 )
+from projectdavid_common.schemas.registry_schemas import (
+    BaseModelDeleted,
+    BaseModelList,
+    BaseModelRead,
+    BaseModelRegisterRequest,
+)
 from projectdavid_common.schemas.runs_schema import (
     Run,
     RunCreate,
@@ -238,3 +244,9 @@ class ValidationInterface:
     ActivateModelResponse = ActivateModelResponse
     TrainingQueueList = TrainingQueueList
     TrainingQueueItem = TrainingQueueItem
+
+    # Model Registry
+    BaseModelRegisterRequest = BaseModelRegisterRequest
+    BaseModelRead = BaseModelRead
+    BaseModelList = BaseModelList
+    BaseModelDeleted = BaseModelDeleted

@@ -1,3 +1,10 @@
+# [0.61.0](https://github.com/project-david-ai/entities-common/compare/v0.60.0...v0.61.0) (2026-03-24)
+
+
+### Features
+
+* Add model registry schemas ([ef7d47a](https://github.com/project-david-ai/entities-common/commit/ef7d47a338b5cc70758c30325cf44fe444bfbe9e))
+
 # [0.60.0](https://github.com/project-david-ai/entities-common/compare/v0.59.0...v0.60.0) (2026-03-23)
 
 

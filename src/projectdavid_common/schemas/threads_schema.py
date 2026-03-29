@@ -41,7 +41,9 @@ class ThreadUpdate(BaseModel):
     participant_ids: Optional[List[str]] = Field(
         default=None, description="Updated list of participant IDs"
     )
-    meta_data: Optional[Dict[str, Any]] = Field(default=None, description="Updated metadata")
+    meta_data: Optional[Dict[str, Any]] = Field(
+        default=None, description="Updated metadata"
+    )
     tool_resources: Optional[Dict[str, Any]] = Field(
         default=None, description="Updated tool resources for the thread"
     )

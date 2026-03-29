@@ -29,10 +29,16 @@ class VectorStoreCreate(BaseModel):
     `user_id` REMOVED – ownership now derived from the caller’s API key.
     """
 
-    name: str = Field(..., min_length=3, max_length=128, description="Human-friendly store name")
+    name: str = Field(
+        ..., min_length=3, max_length=128, description="Human-friendly store name"
+    )
     vector_size: int = Field(..., gt=0, description="Dimensionality of the vectors")
-    distance_metric: str = Field(..., description="Distance metric (COSINE, EUCLID, DOT)")
-    config: Optional[Dict[str, Any]] = Field(None, description="Additional configuration options")
+    distance_metric: str = Field(
+        ..., description="Distance metric (COSINE, EUCLID, DOT)"
+    )
+    config: Optional[Dict[str, Any]] = Field(
+        None, description="Additional configuration options"
+    )
 
     # --- validators -------------------------------------------------------- #
     @field_validator("distance_metric")
@@ -41,7 +47,9 @@ class VectorStoreCreate(BaseModel):
         allowed = {"COSINE", "EUCLID", "DOT"}
         upper = v.upper()
         if upper not in allowed:
-            raise ValueError(f"Invalid distance metric: '{v}'. Must be one of {allowed}")
+            raise ValueError(
+                f"Invalid distance metric: '{v}'. Must be one of {allowed}"
+            )
         return upper
 
 
@@ -78,7 +86,9 @@ class VectorStoreRead(BaseModel):
 
 
 class VectorStoreUpdate(BaseModel):
-    name: Optional[str] = Field(None, min_length=3, max_length=128, description="New store name")
+    name: Optional[str] = Field(
+        None, min_length=3, max_length=128, description="New store name"
+    )
     status: Optional[StatusEnum] = Field(None, description="Status override")
     config: Optional[Dict[str, Any]] = Field(None, description="New config")
 
@@ -89,7 +99,9 @@ class VectorStoreUpdate(BaseModel):
 class VectorStoreFileCreate(BaseModel):
     file_id: str = Field(..., description="Client-assigned unique file record ID")
     file_name: str = Field(..., max_length=256, description="Original filename")
-    file_path: str = Field(..., max_length=1024, description="Identifier path in metadata")
+    file_path: str = Field(
+        ..., max_length=1024, description="Identifier path in metadata"
+    )
     status: Optional[StatusEnum] = Field(None, description="Initial processing state")
     meta_data: Optional[Dict[str, Any]] = Field(None, description="Arbitrary metadata")
 
@@ -112,13 +124,17 @@ class VectorStoreFileRead(BaseModel):
 
 class VectorStoreFileUpdateStatus(BaseModel):
     status: StatusEnum = Field(..., description="New status for the file record")
-    error_message: Optional[str] = Field(None, description="Error message if status is 'failed'")
+    error_message: Optional[str] = Field(
+        None, description="Error message if status is 'failed'"
+    )
 
 
 class VectorStoreFileUpdate(BaseModel):
     status: Optional[StatusEnum] = Field(None, description="Status override")
     error_message: Optional[str] = Field(None, description="New error message")
-    meta_data: Optional[Dict[str, Any]] = Field(None, description="Metadata replacement")
+    meta_data: Optional[Dict[str, Any]] = Field(
+        None, description="Metadata replacement"
+    )
 
 
 # --------------------------------------------------------------------------- #
@@ -135,7 +151,9 @@ class VectorStoreFileList(BaseModel):
 
 
 class VectorStoreLinkAssistant(BaseModel):
-    assistant_ids: List[str] = Field(..., min_length=1, description="Assistant IDs to link")
+    assistant_ids: List[str] = Field(
+        ..., min_length=1, description="Assistant IDs to link"
+    )
 
 
 class VectorStoreUnlinkAssistant(BaseModel):
@@ -152,7 +170,8 @@ class VectorStoreSearchResult(BaseModel):
     vector_id: Optional[str] = None
     store_id: Optional[str] = None
     retrieved_at: int = Field(
-        default_factory=lambda: int(time.time()), description="Unix timestamp when retrieved"
+        default_factory=lambda: int(time.time()),
+        description="Unix timestamp when retrieved",
     )
 
 

@@ -16,7 +16,9 @@ class DeviceIngest(BaseModel):
 
     host_name: str
     ip_address: Optional[str] = None
-    platform: str = Field(..., description="Netmiko-compatible device type, e.g. cisco_ios")
+    platform: str = Field(
+        ..., description="Netmiko-compatible device type, e.g. cisco_ios"
+    )
     groups: List[str] = []
 
     # Contextual metadata — surfaced to the LLM via get_device_info

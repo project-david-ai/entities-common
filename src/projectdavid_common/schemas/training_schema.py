@@ -23,7 +23,9 @@ class DatasetCreate(BaseModel):
     description: Optional[str] = None
     format: DatasetFormat
     file_id: str = Field(..., description="file_id returned by POST /v1/uploads")
-    filename: Optional[str] = Field(default=None, description="Original filename for reference")
+    filename: Optional[str] = Field(
+        default=None, description="Original filename for reference"
+    )
 
 
 class DatasetRead(BaseModel):

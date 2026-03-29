@@ -34,7 +34,9 @@ class ToolValidator:
         # Handle cases where args might be None
         safe_args = args if args else {}
 
-        missing = [f for f in required if f not in safe_args or safe_args[f] in [None, ""]]
+        missing = [
+            f for f in required if f not in safe_args or safe_args[f] in [None, ""]
+        ]
 
         if missing:
             error_msg = f"Validation Error: The tool '{tool_name}' requires missing arguments: {', '.join(missing)}."

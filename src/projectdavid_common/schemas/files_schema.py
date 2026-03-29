@@ -21,7 +21,9 @@ class FileUploadRequest(BaseModel):
 # ─────────────────────────────────────────────────────────────────────────────
 class FileResponse(BaseModel):
     id: str = Field(..., description="Unique identifier of the file")
-    object: Annotated[Literal["file"], Field(description="Always the string 'file'")] = "file"
+    object: Annotated[
+        Literal["file"], Field(description="Always the string 'file'")
+    ] = "file"
     bytes: int = Field(..., description="Size of the file in bytes")
     created_at: Union[datetime, str] = Field(
         ...,
@@ -52,7 +54,9 @@ class FileResponse(BaseModel):
 
 class FileDeleteResponse(BaseModel):
     id: str = Field(..., description="Unique identifier of the file")
-    object: Annotated[Literal["file"], Field(description="Always the string 'file'")] = "file"
+    object: Annotated[
+        Literal["file"], Field(description="Always the string 'file'")
+    ] = "file"
     deleted: bool = Field(..., description="True if the file was deleted successfully")
 
     model_config = ConfigDict(from_attributes=True)

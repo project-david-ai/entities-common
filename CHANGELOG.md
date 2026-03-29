@@ -12,6 +12,20 @@
 * add max_tokens to AssistantCreate/Read/Update schemas, Gold Standard CI, align black/isort to estate standard, remove file_service from common ([eacde95](https://github.com/project-david-ai/entities-common/commit/eacde958af94599e28d79446b22db899e41a3563))
 * Add model registry schemas ([ef7d47a](https://github.com/project-david-ai/entities-common/commit/ef7d47a338b5cc70758c30325cf44fe444bfbe9e))
 
+# [0.61.0](https://github.com/project-david-ai/entities-common/compare/v0.60.0...v0.61.0) (2026-03-29)
+
+
+### Bug Fixes
+
+* clean UTF-8 NoBOM .gitignore ([915a7ca](https://github.com/project-david-ai/entities-common/commit/915a7ca0aaeac971f965a7a2603e2ab3d42469d7))
+
+
+### Features
+
+* add max_tokens to AssistantCreate/Read/Update schemas, Gold Standard CI, align black/isort to estate standard, remove file_service from common ([d58714d](https://github.com/project-david-ai/entities-common/commit/d58714d40f50d9b87260cb79ae9255406f9fc426))
+* add max_tokens to AssistantCreate/Read/Update schemas, Gold Standard CI, align black/isort to estate standard, remove file_service from common ([eacde95](https://github.com/project-david-ai/entities-common/commit/eacde958af94599e28d79446b22db899e41a3563))
+* Add model registry schemas ([ef7d47a](https://github.com/project-david-ai/entities-common/commit/ef7d47a338b5cc70758c30325cf44fe444bfbe9e))
+
 # [0.60.0](https://github.com/project-david-ai/entities-common/compare/v0.59.0...v0.60.0) (2026-03-23)
 
 

@@ -1,3 +1,10 @@
+## [0.61.3](https://github.com/project-david-ai/entities-common/compare/v0.61.2...v0.61.3) (2026-03-29)
+
+
+### Bug Fixes
+
+* align release workflow with working services template ([d88547b](https://github.com/project-david-ai/entities-common/commit/d88547b66b7f9e315f69f6a150a5e621513ee986))
+
 ## [0.61.2](https://github.com/project-david-ai/entities-common/compare/v0.61.1...v0.61.2) (2026-03-29)
 
 

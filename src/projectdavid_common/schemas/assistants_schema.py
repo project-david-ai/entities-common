@@ -1,4 +1,3 @@
-# src/projectdavid_common/schemas/assistants_schema.py
 from typing import Any, Dict, List, Optional
 
 from pydantic import BaseModel, ConfigDict, Field, HttpUrl, field_validator
@@ -8,17 +7,7 @@ from projectdavid_common.schemas.vectors_schema import VectorStoreRead
 from ..constants.tools import PLATFORM_TOOLS
 
 
-# ───────────────────────────────────────────────#
-#  VALIDATION LOGIC
-# ───────────────────────────────────────────────
 def _validate_unique_tool_names(tools: Optional[List[dict]]) -> Optional[List[dict]]:
-    """
-    Ensures users do not define custom functions with names reserved by the platform.
-
-    Logic:
-    1. If type='code_interpreter', we ALLOW it (it's the platform tool flag).
-    2. If type='function' AND name='code_interpreter', we BLOCK it (naming collision).
-    """
     if not tools:
         return tools
 
@@ -37,36 +26,29 @@ def _validate_unique_tool_names(tools: Optional[List[dict]]) -> Optional[List[di
     return tools
 
 
-# ───────────────────────────────────────────────
-#  ASSISTANT  •  CREATE
-# ───────────────────────────────────────────────
 class AssistantCreate(BaseModel):
     id: Optional[str] = Field(None, description="Optional pre-generated assistant ID.")
 
-    # ─── core info ────────────────────────────
     name: str = Field(..., description="Assistant name")
     description: str = Field("", description="Brief description")
     model: str = Field(..., description="LLM model ID")
     instructions: str = Field("", description="System instructions")
 
-    # ─── tools & resources ────────────────────
     tools: Optional[List[dict]] = Field(
         None, description="OpenAI-style tool specs (dicts)."
     )
     tool_resources: Optional[Dict[str, Dict[str, Any]]] = None
 
-    # ─── misc settings ────────────────────────
     meta_data: Optional[dict] = None
     top_p: float = Field(1.0, ge=0, le=1)
     temperature: float = Field(1.0, ge=0, le=2)
     response_format: str = Field("auto")
     max_tokens: Optional[int] = Field(
-        2048,
+        None,
         ge=1,
         description="Maximum tokens to generate per inference pass. Overrides provider defaults at runtime.",
     )
 
-    # ─── agentic settings (Level 3) ───────────
     max_turns: int = Field(
         1, ge=1, description="Max iterations. 1 = Standard, >1 = Autonomous loops."
     )
@@ -84,11 +66,9 @@ class AssistantCreate(BaseModel):
         False, description="Enable detailed reasoning/confidence logging."
     )
 
-    # ─── webhooks ─────────────────────────────
     webhook_url: Optional[HttpUrl] = None
     webhook_secret: Optional[str] = Field(None, min_length=16)
 
-    # ─── VALIDATORS ───────────────────────────
     @field_validator("tools")
     @classmethod
     def prevent_reserved_names(cls, v):
@@ -104,22 +84,17 @@ class AssistantCreate(BaseModel):
                 "deep_research": True,
                 "engineer": True,
                 "decision_telemetry": True,
-                "max_tokens": 2048,
+                "max_tokens": None,
                 "tool_resources": {"file_search": {"vector_store_ids": ["vs_docs"]}},
             }
         }
     )
 
 
-# ───────────────────────────────────────────────
-#  ASSISTANT  •  READ
-# ───────────────────────────────────────────────
 class AssistantRead(BaseModel):
     id: str
     user_id: Optional[str] = None
-    owner_id: Optional[str] = (
-        None  # ← ADDED: required for ownership checks in inference router
-    )
+    owner_id: Optional[str] = None
     object: str
     created_at: int
 
@@ -135,9 +110,8 @@ class AssistantRead(BaseModel):
     top_p: float
     temperature: float
     response_format: str
-    max_tokens: Optional[int] = 2048
+    max_tokens: Optional[int] = None
 
-    # ─── agentic settings ─────────────────────
     max_turns: int
     agent_mode: bool
     web_access: bool
@@ -151,11 +125,7 @@ class AssistantRead(BaseModel):
     model_config = ConfigDict(from_attributes=True)
 
 
-# ───────────────────────────────────────────────
-#  ASSISTANT  •  UPDATE
-# ───────────────────────────────────────────────
 class AssistantUpdate(BaseModel):
-    # ─── scalar fields ────────────────────────
     name: Optional[str] = None
     description: Optional[str] = None
     model: Optional[str] = None
@@ -170,7 +140,6 @@ class AssistantUpdate(BaseModel):
         description="Maximum tokens to generate per inference pass. Overrides provider defaults at runtime.",
     )
 
-    # ─── agentic settings ─────────────────────
     max_turns: Optional[int] = Field(None, ge=1)
     agent_mode: Optional[bool] = None
     web_access: Optional[bool] = None
@@ -178,21 +147,17 @@ class AssistantUpdate(BaseModel):
     engineer: Optional[bool] = None
     decision_telemetry: Optional[bool] = None
 
-    # ─── relationship IDs (lists of strings) ──
     tools: Optional[List[dict]] = Field(
         None, description="OpenAI-style tool specs (dicts)."
     )
     users: Optional[List[str]] = None
     vector_stores: Optional[List[str]] = None
 
-    # ─── JSON config ─────────────────────────
     tool_resources: Optional[Dict[str, Dict[str, Any]]] = None
 
-    # ─── webhooks ─────────────────────────────
     webhook_url: Optional[HttpUrl] = None
     webhook_secret: Optional[str] = Field(None, min_length=16)
 
-    # ─── VALIDATORS ───────────────────────────
     @field_validator("tools")
     @classmethod
     def prevent_reserved_names(cls, v):

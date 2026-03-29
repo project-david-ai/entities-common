@@ -1,5 +1,0 @@
-pydantic
-typing_extensions
-
-[dev]
-pytest

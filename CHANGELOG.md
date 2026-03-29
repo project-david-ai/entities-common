@@ -1,3 +1,10 @@
+## [0.61.2](https://github.com/project-david-ai/entities-common/compare/v0.61.1...v0.61.2) (2026-03-29)
+
+
+### Bug Fixes
+
+* disable attestations, scope release permissions to job level ([18e2351](https://github.com/project-david-ai/entities-common/commit/18e235187238c842a88143ad8835d73db33b2523))
+
 ## [0.61.1](https://github.com/project-david-ai/entities-common/compare/v0.61.0...v0.61.1) (2026-03-29)
 
 

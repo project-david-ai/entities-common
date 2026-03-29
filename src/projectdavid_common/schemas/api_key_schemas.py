@@ -24,7 +24,7 @@ class ApiKeyCreateRequest(BaseModel):
     )
 
     model_config = ConfigDict(
-        extra='forbid',  # Don't allow extra fields in the request
+        extra="forbid",  # Don't allow extra fields in the request
         json_schema_extra={
             "examples": [
                 {"key_name": "Development Key", "expires_in_days": 30},
@@ -51,7 +51,9 @@ class ApiKeyDetails(BaseModel):
     user_id: str = Field(..., description="The ID of the user who owns this key.")
 
     # --- Use the datetime CLASS (aliased as dt) for type hints ---
-    created_at: dt = Field(..., description="The timestamp (UTC) when the key was created.")
+    created_at: dt = Field(
+        ..., description="The timestamp (UTC) when the key was created."
+    )
     expires_at: Optional[dt] = Field(
         default=None,
         description="The timestamp (UTC) when the key will expire, if an expiration was set.",
@@ -61,7 +63,8 @@ class ApiKeyDetails(BaseModel):
         description="The timestamp (UTC) when the key was last successfully used for authentication (if tracked).",
     )
     is_active: bool = Field(
-        ..., description="Indicates if the key is currently active and usable for authentication."
+        ...,
+        description="Indicates if the key is currently active and usable for authentication.",
     )
 
     # Configure Pydantic to work with ORM objects (SQLAlchemy models)
@@ -79,7 +82,8 @@ class ApiKeyCreateResponse(BaseModel):
         description="The generated API key. This is the ONLY time this key will be shown. Store it securely immediately.",
     )
     details: ApiKeyDetails = Field(
-        ..., description="The details of the API key record that was created in the database."
+        ...,
+        description="The details of the API key record that was created in the database.",
     )
 
     model_config = ConfigDict(
@@ -110,5 +114,6 @@ class ApiKeyListResponse(BaseModel):
     """
 
     keys: List[ApiKeyDetails] = Field(
-        ..., description="A list containing the details of the API keys associated with the user."
+        ...,
+        description="A list containing the details of the API keys associated with the user.",
     )

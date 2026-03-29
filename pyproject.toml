@@ -8,7 +8,7 @@ version = "0.56.0"
 description = "Common shared custom packages"
 readme = "README.md"
 authors = [
-  { name = "Francis N.", email = "francis.neequaye@projectdavid.co.uk" }
+  { name = "Francis N.", email = "engineering@projectdavid.co.uk" }
 ]
 license = { text = "MIT" }
 keywords = ["shared", "internal", "utilities", "schemas"]
@@ -18,16 +18,24 @@ dependencies = [
   "pydantic",
   "typing_extensions",
   "httpx",
-  "load_dotenv",
+  "python-dotenv",
   "sqlalchemy>=2.0"
 ]
+
 [project.optional-dependencies]
 dev = [
-  "pytest"
+  "pytest",
+  "black==24.1.1",
+  "isort==5.13.2",
+  "bandit==1.7.7",
+  "mypy>=1.0",
+  "pre-commit",
 ]
 
 [project.urls]
-Homepage = "https://github.com/frankie336/projectdavid_common"
+Homepage = "https://github.com/project-david-ai/entities-common"
+Documentation = "https://docs.projectdavid.co.uk/docs"
+Changelog = "https://github.com/project-david-ai/entities-common/blob/main/CHANGELOG.md"
 
 [project.scripts]
 projectdavid_common-api = "projectdavid_common.main:main"
@@ -43,14 +51,21 @@ include = ["projectdavid_common", "projectdavid_common.*"]
 version = { attr = "projectdavid_common.__version__.__version__" }
 
 [tool.black]
-line-length = 100
-target-version = ["py310"]
-skip-string-normalization = true
+line-length = 88
+target-version = ["py310", "py311", "py312"]
 
 [tool.flake8]
-max-line-length = 200
+max-line-length = 88
 extend-ignore = ["E203"]
 exclude = [".venv", ".git", "__pycache__", "build", "dist"]
 
 [tool.isort]
 profile = "black"
+line_length = 88
+
+[tool.mypy]
+python_version = "3.11"
+warn_return_any = false
+warn_unused_configs = true
+ignore_missing_imports = true
+exclude = ["tests/"]

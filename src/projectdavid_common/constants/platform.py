@@ -23,7 +23,9 @@ ERROR_NO_CONTENT = (
 )
 
 
-DIRECT_DATABASE_URL = "mysql+pymysql://ollama:3e4Qv5uo2Cg31zC1@localhost:3307/cosmic_catalyst"
+DIRECT_DATABASE_URL = (
+    "mysql+pymysql://ollama:3e4Qv5uo2Cg31zC1@localhost:3307/cosmic_catalyst"
+)
 
 
 WEB_SEARCH_BASE_URL = "http://localhost:8080/"

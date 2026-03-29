@@ -7,7 +7,7 @@ def update_version(file_path, new_version):
     content = Path(file_path).read_text(encoding="utf-8")
     new_content = re.sub(
         r'version\s*=\s*"[0-9]+\.[0-9]+\.[0-9]+"',
-        f'version = \"{new_version}\"',
+        f'version = "{new_version}"',
         content,
     )
     Path(file_path).write_text(new_content, encoding="utf-8")

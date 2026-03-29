@@ -50,7 +50,9 @@ class AssistantCreate(BaseModel):
     instructions: str = Field("", description="System instructions")
 
     # ─── tools & resources ────────────────────
-    tools: Optional[List[dict]] = Field(None, description="OpenAI-style tool specs (dicts).")
+    tools: Optional[List[dict]] = Field(
+        None, description="OpenAI-style tool specs (dicts)."
+    )
     tool_resources: Optional[Dict[str, Dict[str, Any]]] = None
 
     # ─── misc settings ────────────────────────
@@ -58,6 +60,11 @@ class AssistantCreate(BaseModel):
     top_p: float = Field(1.0, ge=0, le=1)
     temperature: float = Field(1.0, ge=0, le=2)
     response_format: str = Field("auto")
+    max_tokens: Optional[int] = Field(
+        2048,
+        ge=1,
+        description="Maximum tokens to generate per inference pass. Overrides provider defaults at runtime.",
+    )
 
     # ─── agentic settings (Level 3) ───────────
     max_turns: int = Field(
@@ -66,9 +73,13 @@ class AssistantCreate(BaseModel):
     agent_mode: bool = Field(
         False, description="False = Standard (Level 2), True = Autonomous (Level 3)."
     )
-    web_access: bool = Field(False, description="Enable live web search and browsing capabilities.")
+    web_access: bool = Field(
+        False, description="Enable live web search and browsing capabilities."
+    )
     deep_research: bool = Field(False, description="Enable deep research capabilities.")
-    engineer: bool = Field(False, description="Enable network engineering capabilities.")
+    engineer: bool = Field(
+        False, description="Enable network engineering capabilities."
+    )
     decision_telemetry: bool = Field(
         False, description="Enable detailed reasoning/confidence logging."
     )
@@ -93,6 +104,7 @@ class AssistantCreate(BaseModel):
                 "deep_research": True,
                 "engineer": True,
                 "decision_telemetry": True,
+                "max_tokens": 2048,
                 "tool_resources": {"file_search": {"vector_store_ids": ["vs_docs"]}},
             }
         }
@@ -105,7 +117,9 @@ class AssistantCreate(BaseModel):
 class AssistantRead(BaseModel):
     id: str
     user_id: Optional[str] = None
-    owner_id: Optional[str] = None  # ← ADDED: required for ownership checks in inference router
+    owner_id: Optional[str] = (
+        None  # ← ADDED: required for ownership checks in inference router
+    )
     object: str
     created_at: int
 
@@ -121,6 +135,7 @@ class AssistantRead(BaseModel):
     top_p: float
     temperature: float
     response_format: str
+    max_tokens: Optional[int] = 2048
 
     # ─── agentic settings ─────────────────────
     max_turns: int
@@ -149,6 +164,11 @@ class AssistantUpdate(BaseModel):
     top_p: Optional[float] = Field(None, ge=0, le=1)
     temperature: Optional[float] = Field(None, ge=0, le=2)
     response_format: Optional[str] = None
+    max_tokens: Optional[int] = Field(
+        None,
+        ge=1,
+        description="Maximum tokens to generate per inference pass. Overrides provider defaults at runtime.",
+    )
 
     # ─── agentic settings ─────────────────────
     max_turns: Optional[int] = Field(None, ge=1)
@@ -159,7 +179,9 @@ class AssistantUpdate(BaseModel):
     decision_telemetry: Optional[bool] = None
 
     # ─── relationship IDs (lists of strings) ──
-    tools: Optional[List[dict]] = Field(None, description="OpenAI-style tool specs (dicts).")
+    tools: Optional[List[dict]] = Field(
+        None, description="OpenAI-style tool specs (dicts)."
+    )
     users: Optional[List[str]] = None
     vector_stores: Optional[List[str]] = None
 

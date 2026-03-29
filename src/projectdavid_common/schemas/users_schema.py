@@ -25,13 +25,20 @@ class UserCreate(BaseModel):
 
     # Aligned with the extended User model
     email: Optional[str] = Field(default=None, description="User's email address.")
-    full_name: Optional[str] = Field(default=None, description="User's full display name.")
+    full_name: Optional[str] = Field(
+        default=None, description="User's full display name."
+    )
     given_name: Optional[str] = Field(default=None, description="User's first name.")
     family_name: Optional[str] = Field(default=None, description="User's last name.")
-    picture_url: Optional[str] = Field(default=None, description="URL to profile picture.")
-    email_verified: Optional[bool] = Field(default=False, description="Email verification status.")
+    picture_url: Optional[str] = Field(
+        default=None, description="URL to profile picture."
+    )
+    email_verified: Optional[bool] = Field(
+        default=False, description="Email verification status."
+    )
     oauth_provider: Optional[str] = Field(
-        default='local', description="Authentication provider (e.g., 'google', 'local')."
+        default="local",
+        description="Authentication provider (e.g., 'google', 'local').",
     )
     provider_user_id: Optional[str] = Field(
         default=None, description="User ID from the OAuth provider."
@@ -82,4 +89,6 @@ class UserDeleteResponse(BaseModel):
     success: bool = Field(
         ..., description="Indicates if the deletion was successful (or accepted)."
     )
-    message: Optional[str] = Field(default=None, description="Optional message providing context.")
+    message: Optional[str] = Field(
+        default=None, description="Optional message providing context."
+    )

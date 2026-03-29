@@ -138,6 +138,6 @@ jobs:
         uses: pypa/gh-action-pypi-publish@release/v1
         with:
           user: "__token__"
-          password: ${{ secrets.PYPI_API_TOKEN }}
+          password: ${{ secrets.PROD_PYPI_TOKEN }}
           repository_url: ${{ env.PROD_PYPI_URL }}
           skip-existing: true

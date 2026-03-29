@@ -1,3 +1,10 @@
+## [0.61.4](https://github.com/project-david-ai/entities-common/compare/v0.61.3...v0.61.4) (2026-03-29)
+
+
+### Bug Fixes
+
+* use correct secret PROD_PYPI_TOKEN ([bbec9c7](https://github.com/project-david-ai/entities-common/commit/bbec9c7863ae725ee54be3b0c7ec7788e2c2576c))
+
 ## [0.61.3](https://github.com/project-david-ai/entities-common/compare/v0.61.2...v0.61.3) (2026-03-29)
 
 

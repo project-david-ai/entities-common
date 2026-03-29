@@ -1,3 +1,10 @@
+## [0.61.1](https://github.com/project-david-ai/entities-common/compare/v0.61.0...v0.61.1) (2026-03-29)
+
+
+### Bug Fixes
+
+* remove id-token write permission to prevent trusted publishing interference ([920c89f](https://github.com/project-david-ai/entities-common/commit/920c89fae33dff1c90fb003438195295fef60253))
+
 # [0.61.0](https://github.com/project-david-ai/entities-common/compare/v0.60.0...v0.61.0) (2026-03-29)
 
 

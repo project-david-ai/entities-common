@@ -1,3 +1,10 @@
+## [0.61.5](https://github.com/project-david-ai/entities-common/compare/v0.61.4...v0.61.5) (2026-03-29)
+
+
+### Bug Fixes
+
+* change max_tokens default from 2048 to None to defer to model provider defaults ([c8d0855](https://github.com/project-david-ai/entities-common/commit/c8d085588aab17c05e92dad040c4f8159ac31fa9))
+
 ## [0.61.4](https://github.com/project-david-ai/entities-common/compare/v0.61.3...v0.61.4) (2026-03-29)
 
 

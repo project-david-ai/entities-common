@@ -7,6 +7,7 @@ Covers:
   - Registration (create)
   - Retrieval (single + list)
   - Deletion confirmation
+  - Deployment lifecycle responses (activate, deactivate)
 """
 
 from typing import List, Optional
@@ -126,4 +127,58 @@ class BaseModelDeleted(BaseModel):
     model_id: str = Field(
         ...,
         description="The bm_... ID of the deregistered model.",
+    )
+
+
+# ---------------------------------------------------------------------------
+# Deployment Lifecycle Response Schemas
+# ---------------------------------------------------------------------------
+class DeactivateModelResponse(BaseModel):
+    """
+    Returned by surgical deactivation of a fine-tuned or base model.
+    """
+
+    model_config = ConfigDict(from_attributes=True)
+
+    status: str = Field(
+        ...,
+        description="Outcome of the deactivation request.",
+        examples=["success"],
+    )
+    message: Optional[str] = Field(
+        default=None,
+        description="Human-readable summary of the operation.",
+        examples=["Cluster resources released."],
+    )
+
+
+class DeployBaseModelResponse(BaseModel):
+    """
+    Returned when a base backbone model is dispatched to the cluster.
+    """
+
+    model_config = ConfigDict(from_attributes=True)
+
+    status: str = Field(
+        ...,
+        description="Deployment status.",
+        examples=["deploying_standard"],
+    )
+    model_id: str = Field(
+        ...,
+        description="The bm_... ID of the model being deployed.",
+    )
+    node: str = Field(
+        ...,
+        description="Ray node ID selected for this deployment.",
+    )
+    tensor_parallel_size: int = Field(
+        ...,
+        description="Number of GPUs the model is sharded across.",
+        examples=[1],
+    )
+    next_step: str = Field(
+        ...,
+        description="Human-readable description of the next pipeline stage.",
+        examples=["Standard backbone is being provisioned."],
     )

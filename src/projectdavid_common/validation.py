@@ -39,6 +39,8 @@ from projectdavid_common.schemas.registry_schemas import (
     BaseModelList,
     BaseModelRead,
     BaseModelRegisterRequest,
+    DeactivateModelResponse,
+    DeployBaseModelResponse,
 )
 from projectdavid_common.schemas.runs_schema import (
     Run,
@@ -250,3 +252,5 @@ class ValidationInterface:
     BaseModelRead = BaseModelRead
     BaseModelList = BaseModelList
     BaseModelDeleted = BaseModelDeleted
+    DeactivateModelResponse = DeactivateModelResponse
+    DeployBaseModelResponse = DeployBaseModelResponse

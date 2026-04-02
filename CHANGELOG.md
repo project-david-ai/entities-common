@@ -1,3 +1,10 @@
+# [0.63.0](https://github.com/project-david-ai/entities-common/compare/v0.62.0...v0.63.0) (2026-04-02)
+
+
+### Features
+
+* **schema:** support dynamic Sovereign Forge deployment models in StreamRequest — bypass static MODEL_MAP for vllm/vllm_dep_* identifiers ([a1cc669](https://github.com/project-david-ai/entities-common/commit/a1cc6692ea6bf7e116d85462d539a8ee4281074b))
+
 # [0.62.0](https://github.com/project-david-ai/entities-common/compare/v0.61.5...v0.62.0) (2026-03-31)
 
 

@@ -1,3 +1,10 @@
+# [0.62.0](https://github.com/project-david-ai/entities-common/compare/v0.61.5...v0.62.0) (2026-03-31)
+
+
+### Features
+
+* add DeactivateModelResponse and DeployBaseModelResponse schemas to registry_schemas and ValidationInterface ([19097f1](https://github.com/project-david-ai/entities-common/commit/19097f159af5a224425b3d03b3ce1d1eb59d7688))
+
 ## [0.61.5](https://github.com/project-david-ai/entities-common/compare/v0.61.4...v0.61.5) (2026-03-29)
 
 

@@ -1,3 +1,10 @@
+# [0.64.0](https://github.com/project-david-ai/entities-common/compare/v0.63.0...v0.64.0) (2026-04-04)
+
+
+### Features
+
+* **utilities:** migrate _is_admin to projectdavid-common ([d3e70c0](https://github.com/project-david-ai/entities-common/commit/d3e70c0e5fa22cf14d66f32d40a41e42f94b4ee6))
+
 # [0.63.0](https://github.com/project-david-ai/entities-common/compare/v0.62.0...v0.63.0) (2026-04-02)
 
 

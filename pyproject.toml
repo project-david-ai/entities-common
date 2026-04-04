@@ -14,13 +14,16 @@ license = { text = "MIT" }
 keywords = ["shared", "internal", "utilities", "schemas"]
 requires-python = ">=3.10"
 
+
 dependencies = [
   "pydantic",
   "typing_extensions",
   "httpx",
   "python-dotenv",
-  "sqlalchemy>=2.0"
+  "sqlalchemy>=2.0",
+  "projectdavid-orm>=1.6.0",
 ]
+
 
 [project.optional-dependencies]
 dev = [

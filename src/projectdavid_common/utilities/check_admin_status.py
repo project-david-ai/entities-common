@@ -1,7 +1,6 @@
 # src/api/entities_api/utils/check_admin_status.py
+from projectdavid_orm.projectdavid_orm.models import User as UserModel
 from sqlalchemy.orm import Session
-
-from src.api.entities_api.models.models import User as UserModel
 
 
 def _is_admin(user_id: str, db: Session) -> bool:

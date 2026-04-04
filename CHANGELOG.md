@@ -1,3 +1,10 @@
+## [0.64.1](https://github.com/project-david-ai/entities-common/compare/v0.64.0...v0.64.1) (2026-04-04)
+
+
+### Bug Fixes
+
+* **check_admin_status:** correct doubled module path in UserModel import ([2e166d8](https://github.com/project-david-ai/entities-common/commit/2e166d8108b70fdf56cdc2fc43c8b6eaa4e93381))
+
 # [0.64.0](https://github.com/project-david-ai/entities-common/compare/v0.63.0...v0.64.0) (2026-04-04)
 
 

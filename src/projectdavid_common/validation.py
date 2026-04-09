@@ -18,6 +18,15 @@ from projectdavid_common.schemas.assistants_schema import (
     AssistantRead,
     AssistantUpdate,
 )
+from projectdavid_common.schemas.deployment_schemas import (
+    ActivateBaseModelRequest,
+    ActivateFineTunedModelRequest,
+    DeactivateAllResponse,
+    DeploymentActivationResponse,
+    DeploymentDeactivationResponse,
+    DeploymentListResponse,
+    DeploymentRecord,
+)
 from projectdavid_common.schemas.enums import ProviderEnum, StatusEnum
 from projectdavid_common.schemas.files_schema import (
     FileDeleteResponse,
@@ -254,3 +263,12 @@ class ValidationInterface:
     BaseModelDeleted = BaseModelDeleted
     DeactivateModelResponse = DeactivateModelResponse
     DeployBaseModelResponse = DeployBaseModelResponse
+
+    # Deployment Lifecycle
+    ActivateBaseModelRequest = ActivateBaseModelRequest
+    ActivateFineTunedModelRequest = ActivateFineTunedModelRequest
+    DeploymentActivationResponse = DeploymentActivationResponse
+    DeploymentDeactivationResponse = DeploymentDeactivationResponse
+    DeactivateAllResponse = DeactivateAllResponse
+    DeploymentRecord = DeploymentRecord
+    DeploymentListResponse = DeploymentListResponse

@@ -1,3 +1,10 @@
+# [0.65.0](https://github.com/project-david-ai/entities-common/compare/v0.64.1...v0.65.0) (2026-04-09)
+
+
+### Features
+
+* **schemas:** add deployment_schemas and clean up registry_schemas ([db2e9f5](https://github.com/project-david-ai/entities-common/commit/db2e9f50cf3a5d9618ec6d1d466f4c68fef8aaaa))
+
 ## [0.64.1](https://github.com/project-david-ai/entities-common/compare/v0.64.0...v0.64.1) (2026-04-04)
 
 

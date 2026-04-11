@@ -1,3 +1,10 @@
+## [0.65.2](https://github.com/project-david-ai/entities-common/compare/v0.65.1...v0.65.2) (2026-04-11)
+
+
+### Bug Fixes
+
+* **stream-schema:** remove static model guard — routing handles validation dynamically; mapped_model property resolves vllm/ prefix and sovereign forge deployments ([b6c1ed4](https://github.com/project-david-ai/entities-common/commit/b6c1ed408ac85ff331170630409d0af34a6f73ff))
+
 ## [0.65.1](https://github.com/project-david-ai/entities-common/compare/v0.65.0...v0.65.1) (2026-04-09)
 
 

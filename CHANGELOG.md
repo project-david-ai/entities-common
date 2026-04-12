@@ -1,3 +1,10 @@
+# [0.66.0](https://github.com/project-david-ai/entities-common/compare/v0.65.2...v0.66.0) (2026-04-12)
+
+
+### Features
+
+* **schemas:** add DeploymentUpdateRequest schema ([ff67212](https://github.com/project-david-ai/entities-common/commit/ff67212f20835d534e2d9602d582a687470c0ceb))
+
 ## [0.65.2](https://github.com/project-david-ai/entities-common/compare/v0.65.1...v0.65.2) (2026-04-11)
 
 

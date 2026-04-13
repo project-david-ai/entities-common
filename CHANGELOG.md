@@ -1,3 +1,10 @@
+# [0.67.0](https://github.com/project-david-ai/entities-common/compare/v0.66.0...v0.67.0) (2026-04-13)
+
+
+### Features
+
+* **schemas:** add mm_processor_kwargs to ActivateBaseModelRequest and ActivateFineTunedModelRequest ([6e33432](https://github.com/project-david-ai/entities-common/commit/6e33432753e32211c5995d97fb8ba63805e63021))
+
 # [0.66.0](https://github.com/project-david-ai/entities-common/compare/v0.65.2...v0.66.0) (2026-04-12)
 
 

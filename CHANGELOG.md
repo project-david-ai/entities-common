@@ -1,3 +1,10 @@
+# [0.68.0](https://github.com/project-david-ai/entities-common/compare/v0.67.0...v0.68.0) (2026-04-19)
+
+
+### Features
+
+* **schema:** add TrainingConfig for parameterized fine-tuning jobs ([7c611e7](https://github.com/project-david-ai/entities-common/commit/7c611e757a7e3ee0405b1406c8ffe12ec2a338ad))
+
 # [0.67.0](https://github.com/project-david-ai/entities-common/compare/v0.66.0...v0.67.0) (2026-04-13)
 
 

@@ -58,6 +58,90 @@ class DatasetDeleted(BaseModel):
 
 
 # ---------------------------------------------------------------------------
+# TRAINING CONFIG SCHEMA
+# ---------------------------------------------------------------------------
+
+
+class TrainingProfile(str, Enum):
+    laptop = "laptop"
+    standard = "standard"
+
+
+class TrainingConfig(BaseModel):
+    """
+    Tunable parameters for a training job.
+
+    All fields are optional — omitted values fall back to framework defaults
+    (for unsloth, that's the values baked into PROFILES in unsloth_train.py).
+
+    Users who want a quick smoke test override `max_steps=20`. Users who
+    want an aggressive fine-tune override `lora_r=32` + `num_train_epochs=2`.
+    """
+
+    model_config = ConfigDict(extra="forbid")
+
+    # ── Profile preset ────────────────────────────────────────────────────
+    profile: Optional[TrainingProfile] = Field(
+        default=None,
+        description="Hardware preset. 'laptop' = consumer GPU (8GB). 'standard' = datacenter GPU.",
+    )
+
+    # ── LoRA adapter dials ────────────────────────────────────────────────
+    lora_r: Optional[int] = Field(
+        default=None,
+        description="LoRA rank. Higher = more expressive adapter, larger file. Typical: 8, 16, 32, 64.",
+    )
+    lora_alpha: Optional[int] = Field(
+        default=None,
+        description="LoRA alpha scaling. Conventionally set equal to lora_r.",
+    )
+    lora_dropout: Optional[float] = Field(
+        default=None,
+        ge=0.0,
+        le=0.5,
+        description="Dropout applied to LoRA layers during training.",
+    )
+
+    # ── Training dynamics ─────────────────────────────────────────────────
+    learning_rate: Optional[float] = Field(
+        default=None,
+        gt=0.0,
+        le=1e-2,
+        description="Optimizer learning rate. Above 1e-2 usually diverges.",
+    )
+    num_train_epochs: Optional[int] = Field(
+        default=None,
+        ge=1,
+        le=10,
+        description="Full passes over the dataset. Overridden by max_steps if both set.",
+    )
+    max_steps: Optional[int] = Field(
+        default=None,
+        ge=1,
+        le=100000,
+        description="Hard ceiling on training steps. Overrides num_train_epochs.",
+    )
+    logging_steps: Optional[int] = Field(
+        default=None,
+        ge=1,
+        description="How often to emit progress metrics. Lower = more DB writes.",
+    )
+
+    # ── Hardware scaling ──────────────────────────────────────────────────
+    per_device_train_batch_size: Optional[int] = Field(
+        default=None,
+        ge=1,
+        description="Samples per GPU per forward pass. Higher needs more VRAM.",
+    )
+    gradient_accumulation_steps: Optional[int] = Field(
+        default=None,
+        ge=1,
+        description="Steps to accumulate gradients before weight update. "
+        "Effective batch = per_device_train_batch_size × gradient_accumulation_steps.",
+    )
+
+
+# ---------------------------------------------------------------------------
 # TRAINING JOB SCHEMAS
 # ---------------------------------------------------------------------------
 
@@ -66,7 +150,7 @@ class TrainingJobCreate(BaseModel):
     dataset_id: str
     base_model: str = Field(..., max_length=256)
     framework: str = Field(default="axolotl", pattern="^(axolotl|unsloth)$")
-    config: Optional[Dict[str, Any]] = None
+    config: Optional[TrainingConfig] = None
 
 
 class TrainingJobRead(BaseModel):

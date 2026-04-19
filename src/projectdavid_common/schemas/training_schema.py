@@ -269,3 +269,28 @@ class ActivateModelResponse(BaseModel):
         description="Number of GPUs this deployment is sharded across.",
     )
     next_step: str
+
+
+class TrainingJobCancelResponse(BaseModel):
+    """
+    Returned by POST /v1/training-jobs/{job_id}/cancel.
+
+    Idempotent — calling cancel on a job already in a terminal state
+    returns the current status without error.
+    """
+
+    job_id: str
+    status: str = Field(
+        ...,
+        description="Current job status after cancel request. "
+        "One of: cancelling, cancelled, completed, failed.",
+    )
+    cancelled_at: Optional[int] = Field(
+        default=None,
+        description="Unix timestamp when cancellation was initiated. "
+        "None if the job had already finished before cancel was called.",
+    )
+    message: str = Field(
+        ...,
+        description="Human-readable description of the cancel outcome.",
+    )

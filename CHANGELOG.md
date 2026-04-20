@@ -1,3 +1,10 @@
+# [0.70.0](https://github.com/project-david-ai/entities-common/compare/v0.69.0...v0.70.0) (2026-04-20)
+
+
+### Features
+
+* **training:** expand TrainingConfig with full hyperparameter surface ([a11e0aa](https://github.com/project-david-ai/entities-common/commit/a11e0aa95b4dc1a495a02dc52a328f3102aa8dd1))
+
 # [0.69.0](https://github.com/project-david-ai/entities-common/compare/v0.68.0...v0.69.0) (2026-04-19)
 
 

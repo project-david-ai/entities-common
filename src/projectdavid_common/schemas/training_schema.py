@@ -1,7 +1,7 @@
 # src/projectdavid_common/schemas/training_schema.py
 
 from enum import Enum
-from typing import Any, Dict, List, Optional
+from typing import Any, Dict, List, Literal, Optional
 
 from pydantic import BaseModel, ConfigDict, Field
 
@@ -71,11 +71,18 @@ class TrainingConfig(BaseModel):
     """
     Tunable parameters for a training job.
 
-    All fields are optional — omitted values fall back to framework defaults
-    (for unsloth, that's the values baked into PROFILES in unsloth_train.py).
+    All fields are optional. Resolution order at job-create time:
+        BASE_DEFAULTS → PROFILES[profile] (if profile set) → user field overrides
 
-    Users who want a quick smoke test override `max_steps=20`. Users who
-    want an aggressive fine-tune override `lora_r=32` + `num_train_epochs=2`.
+    The fully-resolved dict is written to TrainingJob.config and is the sole
+    source of truth for the worker and trainer. No late resolution anywhere.
+
+    The four knobs most commonly tuned in practice are:
+        max_steps, learning_rate, lora_r, lora_alpha.
+    The rest are exposed for power users.
+
+    lora_alpha convention: if lora_r is set and lora_alpha is not, the service
+    sets lora_alpha = lora_r automatically (standard PEFT convention).
     """
 
     model_config = ConfigDict(extra="forbid")
@@ -83,17 +90,25 @@ class TrainingConfig(BaseModel):
     # ── Profile preset ────────────────────────────────────────────────────
     profile: Optional[TrainingProfile] = Field(
         default=None,
-        description="Hardware preset. 'laptop' = consumer GPU (8GB). 'standard' = datacenter GPU.",
+        description="Hardware preset. 'laptop' = consumer GPU (8GB). "
+        "'standard' = datacenter GPU. Omit to use BASE_DEFAULTS "
+        "(equivalent to 'standard' for profile-scoped fields).",
     )
 
     # ── LoRA adapter dials ────────────────────────────────────────────────
     lora_r: Optional[int] = Field(
         default=None,
-        description="LoRA rank. Higher = more expressive adapter, larger file. Typical: 8, 16, 32, 64.",
+        ge=1,
+        le=128,
+        description="LoRA rank. Higher = more expressive adapter, larger file. "
+        "Typical: 8, 16, 32, 64.",
     )
     lora_alpha: Optional[int] = Field(
         default=None,
-        description="LoRA alpha scaling. Conventionally set equal to lora_r.",
+        ge=1,
+        le=256,
+        description="LoRA alpha scaling. Defaults to lora_r if unset "
+        "(standard PEFT convention).",
     )
     lora_dropout: Optional[float] = Field(
         default=None,
@@ -101,41 +116,84 @@ class TrainingConfig(BaseModel):
         le=0.5,
         description="Dropout applied to LoRA layers during training.",
     )
+    bias: Optional[Literal["none", "all", "lora_only"]] = Field(
+        default=None,
+        description="Which biases to train. 'none' is standard for LoRA fine-tuning.",
+    )
 
     # ── Training dynamics ─────────────────────────────────────────────────
     learning_rate: Optional[float] = Field(
         default=None,
         gt=0.0,
         le=1e-2,
-        description="Optimizer learning rate. Above 1e-2 usually diverges.",
+        description="Optimizer learning rate. Values above 1e-2 usually diverge "
+        "(safety ceiling).",
     )
     num_train_epochs: Optional[int] = Field(
         default=None,
         ge=1,
         le=10,
-        description="Full passes over the dataset. Overridden by max_steps if both set.",
+        description="Full passes over the dataset. Ignored if max_steps is set.",
     )
     max_steps: Optional[int] = Field(
         default=None,
         ge=1,
-        le=100000,
+        le=1_000_000,
         description="Hard ceiling on training steps. Overrides num_train_epochs.",
+    )
+    warmup_steps: Optional[int] = Field(
+        default=None,
+        ge=0,
+        le=10_000,
+        description="Linear LR warmup steps at the start of training.",
+    )
+    weight_decay: Optional[float] = Field(
+        default=None,
+        ge=0.0,
+        le=1.0,
+        description="L2 regularization strength.",
+    )
+    lr_scheduler_type: Optional[
+        Literal["linear", "cosine", "constant", "constant_with_warmup"]
+    ] = Field(
+        default=None,
+        description="Learning rate scheduler shape.",
+    )
+    optim: Optional[Literal["adamw_8bit", "adamw_torch", "sgd"]] = Field(
+        default=None,
+        description="Optimizer. 'adamw_8bit' is default for memory efficiency.",
+    )
+    seed: Optional[int] = Field(
+        default=None,
+        ge=0,
+        le=2**31 - 1,
+        description="RNG seed. Used by both SFTConfig and PEFT model init for "
+        "full determinism.",
     )
     logging_steps: Optional[int] = Field(
         default=None,
         ge=1,
+        le=10_000,
         description="How often to emit progress metrics. Lower = more DB writes.",
     )
 
     # ── Hardware scaling ──────────────────────────────────────────────────
+    max_seq_length: Optional[int] = Field(
+        default=None,
+        ge=128,
+        le=32_768,
+        description="Max sequence length in tokens. Larger = more VRAM per sample.",
+    )
     per_device_train_batch_size: Optional[int] = Field(
         default=None,
         ge=1,
+        le=64,
         description="Samples per GPU per forward pass. Higher needs more VRAM.",
     )
     gradient_accumulation_steps: Optional[int] = Field(
         default=None,
         ge=1,
+        le=256,
         description="Steps to accumulate gradients before weight update. "
         "Effective batch = per_device_train_batch_size × gradient_accumulation_steps.",
     )
@@ -181,7 +239,7 @@ class TrainingJobList(BaseModel):
 
 
 # ---------------------------------------------------------------------------
-# QUEUE DIAGNOSTIC SCHEMAS (Multi-tenant secure peek)
+# QUEUE DIAGNOSTIC SCHEMAS
 # ---------------------------------------------------------------------------
 
 
@@ -247,50 +305,17 @@ class HubPushPayload(BaseModel):
 
 
 class ActivateModelResponse(BaseModel):
-    """
-    Returned by both activate_model() and activate_base_model().
-
-    Fields:
-        status:               'deploying' or 'deploying_standard'
-        model_id:             The model being deployed
-        node:                 Ray node ID (hex) the deployment is scheduled on
-        tensor_parallel_size: Number of GPUs the model is sharded across
-        next_step:            Human-readable description of what happens next
-    """
-
     model_config = ConfigDict(protected_namespaces=())
 
     status: str
     model_id: str
     node: str
-    tensor_parallel_size: int = Field(
-        default=1,
-        ge=1,
-        description="Number of GPUs this deployment is sharded across.",
-    )
+    tensor_parallel_size: int = Field(default=1, ge=1)
     next_step: str
 
 
 class TrainingJobCancelResponse(BaseModel):
-    """
-    Returned by POST /v1/training-jobs/{job_id}/cancel.
-
-    Idempotent — calling cancel on a job already in a terminal state
-    returns the current status without error.
-    """
-
     job_id: str
-    status: str = Field(
-        ...,
-        description="Current job status after cancel request. "
-        "One of: cancelling, cancelled, completed, failed.",
-    )
-    cancelled_at: Optional[int] = Field(
-        default=None,
-        description="Unix timestamp when cancellation was initiated. "
-        "None if the job had already finished before cancel was called.",
-    )
-    message: str = Field(
-        ...,
-        description="Human-readable description of the cancel outcome.",
-    )
+    status: str
+    cancelled_at: Optional[int] = None
+    message: str

@@ -83,6 +83,7 @@ from projectdavid_common.schemas.training_schema import (
     FineTunedModelRead,
     HubPushPayload,
     TrainingConfig,
+    TrainingJobCancelResponse,
     TrainingJobCreate,
     TrainingJobList,
     TrainingJobRead,
@@ -257,6 +258,7 @@ class ValidationInterface:
     TrainingQueueList = TrainingQueueList
     TrainingQueueItem = TrainingQueueItem
     TrainingConfig = TrainingConfig
+    TrainingJobCancelResponse = TrainingJobCancelResponse
 
     # Model Registry
     BaseModelRegisterRequest = BaseModelRegisterRequest

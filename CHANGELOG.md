@@ -1,3 +1,10 @@
+## [0.70.1](https://github.com/project-david-ai/entities-common/compare/v0.70.0...v0.70.1) (2026-04-21)
+
+
+### Bug Fixes
+
+* **common:** expose TrainingConfig on ValidationInterface facade ([efafe9f](https://github.com/project-david-ai/entities-common/commit/efafe9f7ee921c08c0f645b563824f263e298814))
+
 # [0.70.0](https://github.com/project-david-ai/entities-common/compare/v0.69.0...v0.70.0) (2026-04-20)
 
 

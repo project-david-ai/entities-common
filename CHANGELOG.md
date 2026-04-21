@@ -1,3 +1,10 @@
+## [0.70.2](https://github.com/project-david-ai/entities-common/compare/v0.70.1...v0.70.2) (2026-04-21)
+
+
+### Bug Fixes
+
+* **common:** expose TrainingJobCancelResponse on ValidationInterface facade ([8747def](https://github.com/project-david-ai/entities-common/commit/8747def38fef0f78d0fa2eb77ae3fe9e9b66f497))
+
 ## [0.70.1](https://github.com/project-david-ai/entities-common/compare/v0.70.0...v0.70.1) (2026-04-21)
 
 

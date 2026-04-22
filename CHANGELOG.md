@@ -1,3 +1,10 @@
+# [0.72.0](https://github.com/project-david-ai/entities-common/compare/v0.71.0...v0.72.0) (2026-04-22)
+
+
+### Features
+
+* **training:** expose target_modules as a tunable TrainingConfig field ([b4735d4](https://github.com/project-david-ai/entities-common/commit/b4735d43e794e7bb277f1da00366aae1cae0adaf))
+
 # [0.71.0](https://github.com/project-david-ai/entities-common/compare/v0.70.2...v0.71.0) (2026-04-22)
 
 

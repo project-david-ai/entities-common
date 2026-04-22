@@ -1,3 +1,10 @@
+# [0.71.0](https://github.com/project-david-ai/entities-common/compare/v0.70.2...v0.71.0) (2026-04-22)
+
+
+### Features
+
+* **constants:** expose canonical training BASE_DEFAULTS and PROFILES ([c9c4196](https://github.com/project-david-ai/entities-common/commit/c9c41967a50a64b3c1e0ff52b31cc6c279e21a7c))
+
 ## [0.70.2](https://github.com/project-david-ai/entities-common/compare/v0.70.1...v0.70.2) (2026-04-21)
 
 

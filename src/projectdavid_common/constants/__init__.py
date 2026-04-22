@@ -6,3 +6,4 @@ from .mime_types import (
 )
 from .timeouts import DEFAULT_TIMEOUT
 from .tools import PLATFORM_TOOLS, SPECIAL_CASE_TOOL_HANDLING, TOOLS_ID_MAP
+from .training_profiles import BASE_DEFAULTS, PROFILES

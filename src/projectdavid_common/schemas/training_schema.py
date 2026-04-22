@@ -120,6 +120,27 @@ class TrainingConfig(BaseModel):
         default=None,
         description="Which biases to train. 'none' is standard for LoRA fine-tuning.",
     )
+    target_modules: Optional[
+        List[
+            Literal[
+                "q_proj",
+                "k_proj",
+                "v_proj",
+                "o_proj",
+                "gate_proj",
+                "up_proj",
+                "down_proj",
+            ]
+        ]
+    ] = Field(
+        default=None,
+        min_length=1,
+        description="Which projection matrices receive LoRA adapters. "
+        "Subset of q_proj, k_proj, v_proj, o_proj (attention) and "
+        "gate_proj, up_proj, down_proj (MLP). 'Attention only' "
+        "= [q_proj, k_proj, v_proj, o_proj]. Unset = all seven "
+        "(full-coverage default).",
+    )
 
     # ── Training dynamics ─────────────────────────────────────────────────
     learning_rate: Optional[float] = Field(

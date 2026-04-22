@@ -69,4 +69,25 @@ PROFILES: Dict[str, Dict[str, Any]] = {
 }
 
 
-__all__ = ["BASE_DEFAULTS", "PROFILES"]
+# ─── LORA TARGET MODULES ──────────────────────────────────────────────────────
+# The PEFT target_modules field selects which projection matrices in the base
+# model receive LoRA adapters. Names must match module names in the underlying
+# transformer — these seven cover the standard attention + MLP projections
+# present in Qwen 2/3, Llama 2/3, Mistral, and most decoder-only families.
+#
+# Phase 2 exposes this as a user-tunable list via the API. The Literal
+# validator below enforces membership on the schema. Architecture-aware
+# validation (rejecting target_modules that don't exist on the chosen
+# base_model) is Phase 3 work.
+LORA_TARGET_MODULES_ALLOWED = (
+    "q_proj",  # query projection (attention)
+    "k_proj",  # key projection (attention)
+    "v_proj",  # value projection (attention)
+    "o_proj",  # output projection (attention)
+    "gate_proj",  # gated MLP input
+    "up_proj",  # MLP up-projection
+    "down_proj",  # MLP down-projection
+)
+
+
+__all__ = ["BASE_DEFAULTS", "PROFILES", "LORA_TARGET_MODULES_ALLOWED"]

@@ -161,6 +161,7 @@ TOGETHER_AI_MODELS = {
     "together-ai/moonshotai/Kimi-K2-Instruct-0905": "moonshotai/Kimi-K2-Instruct-0905",
     "together-ai/moonshotai/Kimi-K2-Thinking": "moonshotai/Kimi-K2-Thinking",
     "together-ai/moonshotai/Kimi-K2.5": "moonshotai/Kimi-K2.5",
+    "together-ai/moonshotai/Kimi-K3": "moonshotai/Kimi-K3",
     # --- Nvidia ---
     "together-ai/nvidia/NVIDIA-Nemotron-Nano-9B-v2": "nvidia/NVIDIA-Nemotron-Nano-9B-v2",
     # --- Openai (Together AI namespace) ---

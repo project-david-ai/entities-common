@@ -1,3 +1,10 @@
+## [0.72.1](https://github.com/project-david-ai/entities-common/compare/v0.72.0...v0.72.1) (2026-08-20)
+
+
+### Bug Fixes
+
+* add Together AI mapping for Kimi K3 ([b3870fb](https://github.com/project-david-ai/entities-common/commit/b3870fb1672494dfb0a51843be92c4997aa8d19e))
+
 # [0.72.0](https://github.com/project-david-ai/entities-common/compare/v0.71.0...v0.72.0) (2026-04-22)
 
 

@@ -1,3 +1,10 @@
+## [0.72.2](https://github.com/project-david-ai/entities-common/compare/v0.72.1...v0.72.2) (2026-08-21)
+
+
+### Bug Fixes
+
+* trigger release for provider prefix model routing ([fa8de7c](https://github.com/project-david-ai/entities-common/commit/fa8de7c37d38b9aa9b150458554b8a8992a212e6))
+
 ## [0.72.1](https://github.com/project-david-ai/entities-common/compare/v0.72.0...v0.72.1) (2026-08-20)
 
 

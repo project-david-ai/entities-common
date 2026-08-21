@@ -1,223 +1,102 @@
-# ------------------------------------------------
-# Vendors sometimes have clashing model names.
-# This can interfere with routing logic
-# This map resolves any likely clashes
-# Also serves as source of truth, describing
-# supported models
-# _________________________________________________
+# projectdavid_common/constants/ai_model_map.py
 
-# ------------------------------------------------
-# PROVIDER-SPECIFIC MODEL MAPS
-# Each dictionary acts as the "driver" for that vendor
-# ------------------------------------------------
+from __future__ import annotations
 
+# ---------------------------------------------------------------------------
+# Project David internal provider namespaces
+# ---------------------------------------------------------------------------
+#
+# These prefixes exist for Project David routing only.
+#
+# Once routing is complete, the prefix is removed and the remaining model
+# identifier is passed directly to the selected provider.
+#
+# Example:
+#
+#   together-ai/moonshotai/Kimi-K3
+#       -> moonshotai/Kimi-K3
+#
+#   hyperbolic/openai/gpt-oss-120b
+#       -> openai/gpt-oss-120b
+#
+# This intentionally does NOT act as a model allowlist.
+# Providers themselves remain the source of truth for whether a model exists.
+#
 
-VLLM_MODELS = {
-    # ── Vlm & Fine Tuned ─────────────────────────────────────────────────────
-    "vllm/david-ft": "david-ft",
-    "vllm/unsloth/qwen2.5-1.5b-instruct-unsloth-bnb-4bit": "unsloth/qwen2.5-1.5b-instruct-unsloth-bnb-4bit",
-    # ── Qwen2.5 Instruct ─────────────────────────────────────────────────────
-    "vllm/Qwen/Qwen2.5-1.5B-Instruct": "Qwen/Qwen2.5-1.5B-Instruct",  # text only, no tool calling
-    "vllm/Qwen/Qwen2.5-3B-Instruct": "Qwen/Qwen2.5-3B-Instruct",  # recommended entry point
-    "vllm/Qwen/Qwen2.5-7B-Instruct": "Qwen/Qwen2.5-7B-Instruct",
-    "vllm/Qwen/Qwen2.5-14B-Instruct": "Qwen/Qwen2.5-14B-Instruct",
-    "vllm/Qwen/Qwen2.5-32B-Instruct": "Qwen/Qwen2.5-32B-Instruct",
-    "vllm/Qwen/Qwen2.5-72B-Instruct": "Qwen/Qwen2.5-72B-Instruct",
-    # ── Qwen3 (thinking-capable) ─────────────────────────────────────────────
-    "vllm/Qwen/Qwen3-1.7B": "Qwen/Qwen3-1.7B",  # text only, no tool calling
-    "vllm/Qwen/Qwen3-4B": "Qwen/Qwen3-4B",
-    "vllm/Qwen/Qwen3-8B": "Qwen/Qwen3-8B",
-    "vllm/Qwen/Qwen3-14B": "Qwen/Qwen3-14B",
-    "vllm/Qwen/Qwen3-32B": "Qwen/Qwen3-32B",
-    # ── Qwen3.5-VL (vision) ──────────────────────────────────────────────────
-    "vllm/Qwen/Qwen3.5-4B": "Qwen/Qwen3.5-4B",
-    # ── Qwen2.5-VL (vision) ──────────────────────────────────────────────────
-    "vllm/Qwen/Qwen2.5-VL-3B-Instruct": "Qwen/Qwen2.5-VL-3B-Instruct",
-    "vllm/Qwen/Qwen2.5-VL-7B-Instruct": "Qwen/Qwen2.5-VL-7B-Instruct",
-    "vllm/Qwen/Qwen2.5-VL-72B-Instruct": "Qwen/Qwen2.5-VL-72B-Instruct",
-    # ── Mistral ──────────────────────────────────────────────────────────────
-    "vllm/mistralai/Mistral-7B-Instruct-v0.3": "mistralai/Mistral-7B-Instruct-v0.3",
-    "vllm/mistralai/Mistral-Nemo-Instruct-2407": "mistralai/Mistral-Nemo-Instruct-2407",  # 12B
-    "vllm/mistralai/Mistral-Small-3.1-24B-Instruct-2503": "mistralai/Mistral-Small-3.1-24B-Instruct-2503",
-    # ── Llama 3.x (requires HF gated access) ────────────────────────────────
-    "vllm/meta-llama/Llama-3.1-8B-Instruct": "meta-llama/Llama-3.1-8B-Instruct",
-    "vllm/meta-llama/Llama-3.1-70B-Instruct": "meta-llama/Llama-3.1-70B-Instruct",
-    "vllm/meta-llama/Llama-3.2-3B-Instruct": "meta-llama/Llama-3.2-3B-Instruct",
-    "vllm/meta-llama/Llama-3.3-70B-Instruct": "meta-llama/Llama-3.3-70B-Instruct",
-    # ── Phi-3 / Phi-3.5 (Microsoft) ─────────────────────────────────────────
-    "vllm/microsoft/Phi-3.5-mini-instruct": "microsoft/Phi-3.5-mini-instruct",  # 3.8B
-    "vllm/microsoft/Phi-3-medium-128k-instruct": "microsoft/Phi-3-medium-128k-instruct",  # 14B
-    # ── Gemma 2 (Google) ─────────────────────────────────────────────────────
-    "vllm/google/gemma-2-2b-it": "google/gemma-2-2b-it",
-    "vllm/google/gemma-2-9b-it": "google/gemma-2-9b-it",
-    "vllm/google/gemma-2-27b-it": "google/gemma-2-27b-it",
-    # ── DeepSeek ─────────────────────────────────────────────────────────────
-    "vllm/deepseek-ai/DeepSeek-R1-Distill-Qwen-7B": "deepseek-ai/DeepSeek-R1-Distill-Qwen-7B",
-    "vllm/deepseek-ai/DeepSeek-R1-Distill-Llama-8B": "deepseek-ai/DeepSeek-R1-Distill-Llama-8B",
-    # ── InternVL2 (vision) ───────────────────────────────────────────────────
-    "vllm/OpenGVLab/InternVL2-4B": "OpenGVLab/InternVL2-4B",
-    "vllm/OpenGVLab/InternVL2-8B": "OpenGVLab/InternVL2-8B",
-    "vllm/OpenGVLab/InternVL2-26B": "OpenGVLab/InternVL2-26B",
-}
+MODEL_PROVIDER_PREFIXES = (
+    "together-ai/",
+    "hyperbolic/",
+    "deepseek-ai/",
+    "ollama/",
+    "vllm/",
+)
 
 
-OLLAMA_MODELS = {
-    # --- Qwen ---
-    "ollama/qwen3:4b": "qwen3:4b",
-    "ollama/qwen3:8b": "qwen3:8b",
-    "ollama/qwen3:14b": "qwen3:14b",
-    # --- Meta ---
-    "ollama/llama3.2:3b": "llama3.2:3b",
-    "ollama/llama3.1:8b": "llama3.1:8b",
-    # --- Mistral ---
-    "ollama/mistral:7b": "mistral:7b",
-    # --- Google ---
-    "ollama/gemma3:4b": "gemma3:4b",
-    "ollama/minicpm-v:8b": "minicpm-v:8b",
-}
+# ---------------------------------------------------------------------------
+# Exceptional aliases
+# ---------------------------------------------------------------------------
+#
+# Keep this deliberately small.
+#
+# These are internal routing identifiers whose provider-facing model name
+# cannot be obtained simply by stripping the Project David provider prefix.
+#
+# Add entries here only when Project David introduces a genuine synthetic
+# route or a provider has an unavoidable naming mismatch.
+#
 
-
-DEEPSEEK_NATIVE_MODELS = {
-    "deepseek-ai/deepseek-reasoner": "deepseek-reasoner",
-    "deepseek-ai/deepseek-chat": "deepseek-chat",
-}
-
-TOGETHER_AI_MODELS = {
-    # --- For deep research routing ---
+MODEL_ALIASES = {
+    # Synthetic Project David deep-research route.
     "together-ai/Qwen/Qwen3-Next-80B-A3B-Instruct/deep-research": "Qwen/Qwen3-Next-80B-A3B-Instruct",
-    # --- Qwen (Alibaba) ---
-    "together-ai/Qwen/QwQ-32B": "Qwen/QwQ-32B",
-    "together-ai/Qwen/Qwen2.5-14B-Instruct": "Qwen/Qwen2.5-14B-Instruct",
-    "together-ai/Qwen/Qwen-Image": "Qwen/Qwen-Image",
-    "together-ai/Qwen/Qwen2-7B": "Qwen/Qwen2-7B",
-    "together-ai/Qwen/Qwen2-VL-72B-Instruct": "Qwen/Qwen2-VL-72B-Instruct",
-    "together-ai/Qwen/Qwen2.5-1.5B": "Qwen/Qwen2.5-1.5B",
-    "together-ai/Qwen/Qwen2.5-72B-Instruct-Turbo": "Qwen/Qwen2.5-72B-Instruct-Turbo",
-    "together-ai/Qwen/Qwen2.5-72B-Instruct": "Qwen/Qwen2.5-72B-Instruct",
-    "together-ai/Qwen/Qwen2.5-7B-Instruct-Turbo": "Qwen/Qwen2.5-7B-Instruct-Turbo",
-    "together-ai/Qwen/Qwen2.5-Coder-32B-Instruct": "Qwen/Qwen2.5-Coder-32B-Instruct",
-    "together-ai/Qwen/Qwen2.5-VL-72B-Instruct": "Qwen/Qwen2.5-VL-72B-Instruct",
-    "together-ai/Qwen/Qwen3-14B-Base": "Qwen/Qwen3-14B-Base",
-    "together-ai/Qwen/Qwen3-235B-A22B-Instruct-2507-tput": "Qwen/Qwen3-235B-A22B-Instruct-2507-tput",
-    "together-ai/Qwen/Qwen3-235B-A22B-Thinking-2507": "Qwen/Qwen3-235B-A22B-Thinking-2507",
-    "together-ai/Qwen/Qwen3-235B-A22B-fp8-tput": "Qwen/Qwen3-235B-A22B-fp8-tput",
-    "together-ai/Qwen/Qwen3-8B": "Qwen/Qwen3-8B",
-    "together-ai/Qwen/Qwen3-Coder-480B-A35B-Instruct-FP8": "Qwen/Qwen3-Coder-480B-A35B-Instruct-FP8",
-    "together-ai/Qwen/Qwen3-Coder-Next-FP8": "Qwen/Qwen3-Coder-Next-FP8",
-    "together-ai/Qwen/Qwen3-Next-80B-A3B-Instruct": "Qwen/Qwen3-Next-80B-A3B-Instruct",
-    "together-ai/Qwen/Qwen3-Next-80B-A3B-Instruct-FP8": "Qwen/Qwen3-Next-80B-A3B-Instruct-FP8",
-    "together-ai/Qwen/Qwen3-Next-80B-A3B-Thinking": "Qwen/Qwen3-Next-80B-A3B-Thinking",
-    "together-ai/Qwen/Qwen3-VL-235B-A22B-Instruct-FP": "Qwen/Qwen3-VL-235B-A22B-Instruct-FP",
-    "together-ai/Qwen/Qwen3-VL-32B-Instruct": "Qwen/Qwen3-VL-32B-Instruct",
-    "together-ai/Qwen/Qwen3-VL-8B-Instruct": "Qwen/Qwen3-VL-8B-Instruct",
-    # --- Servicenow-ai ---
-    "together-ai/ServiceNow-AI/Apriel-1.5-15b-Thinker": "ServiceNow-AI/Apriel-1.5-15b-Thinker",
-    "together-ai/ServiceNow-AI/Apriel-1.6-15b-Thinker": "ServiceNow-AI/Apriel-1.6-15b-Thinker",
-    # --- Arcee-ai ---
-    "together-ai/arcee-ai/trinity-mini": "arcee-ai/trinity-mini",
-    # --- Arize-ai ---
-    "together-ai/arize-ai/qwen-2-1.5b-instruct": "arize-ai/qwen-2-1.5b-instruct",
-    # --- Deepcogito ---
-    "together-ai/deepcogito/cogito-v2-1-671b": "deepcogito/cogito-v2-1-671b",
-    "together-ai/deepcogito/cogito-v2-preview-llama-109B-MoE": "deepcogito/cogito-v2-preview-llama-109B-MoE",
-    "together-ai/deepcogito/cogito-v2-preview-llama-405B": "deepcogito/cogito-v2-preview-llama-405B",
-    "together-ai/deepcogito/cogito-v2-preview-llama-70B": "deepcogito/cogito-v2-preview-llama-70B",
-    # --- Deepseek-ai ---
-    "together-ai/deepseek-ai/DeepSeek-R1": "deepseek-ai/DeepSeek-R1",
-    "together-ai/deepseek-ai/DeepSeek-R1-0528-tput": "deepseek-ai/DeepSeek-R1-0528-tput",
-    "together-ai/deepseek-ai/DeepSeek-R1-Distill-Llama-70B-free": "deepseek-ai/DeepSeek-R1-Distill-Llama-70B-free",
-    "together-ai/deepseek-ai/DeepSeek-R1-Distill-Qwen-1.5B": "deepseek-ai/DeepSeek-R1-Distill-Qwen-1.5B",
-    "together-ai/deepseek-ai/DeepSeek-V3": "deepseek-ai/DeepSeek-V3",
-    "together-ai/deepseek-ai/DeepSeek-V3.1": "deepseek-ai/DeepSeek-V3.1",
-    "together-ai/deepseek-ai/deepseek-ai/DeepSeek-R1-Distill-Qwen-14B": "deepseek-ai/DeepSeek-R1-Distill-Qwen-14B",
-    # --- Essentialai ---
-    "together-ai/essentialai/rnj-1-instruct": "essentialai/rnj-1-instruct",
-    # --- Google ---
-    "together-ai/google/gemma-2-9b-it": "google/gemma-2-9b-it",
-    "together-ai/google/gemma-2b-it-Ishan": "google/gemma-2b-it-Ishan",
-    "together-ai/google/gemma-3n-E4B-it": "google/gemma-3n-E4B-it",
-    # --- Marin-community ---
-    "together-ai/marin-community/marin-8b-instruct": "marin-community/marin-8b-instruct",
-    # --- Meta-llama ---
-    "together-ai/meta-llama/Llama-3.2-11B-Vision-Instruct-Turbo": "meta-llama/Llama-3.2-11B-Vision-Instruct-Turbo",
-    "together-ai/meta-llama/Llama-3.2-3B-Instruct-Turbo": "meta-llama/Llama-3.2-3B-Instruct-Turbo",
-    "together-ai/meta-llama/Llama-3.2-90B-Vision-Instruct-Turbo": "meta-llama/Llama-3.2-90B-Vision-Instruct-Turbo",
-    "together-ai/meta-llama/Llama-3.3-70B-Instruct-Turbo": "meta-llama/Llama-3.3-70B-Instruct-Turbo",
-    "together-ai/meta-llama/Llama-4-Maverick-17B-128E-Instruct-FP8": "meta-llama/Llama-4-Maverick-17B-128E-Instruct-FP8",
-    "together-ai/meta-llama/Llama-4-Scout-17B-16E-Instruct": "meta-llama/Llama-4-Scout-17B-16E-Instruct",
-    "together-ai/meta-llama/Llama-Vision-Free": "meta-llama/Llama-Vision-Free",
-    "together-ai/meta-llama/LlamaGuard-2-8b": "meta-llama/LlamaGuard-2-8b",
-    "together-ai/meta-llama/Meta-Llama-3-8B-Instruct-Lite": "meta-llama/Meta-Llama-3-8B-Instruct-Lite",
-    "together-ai/meta-llama/Meta-Llama-3.1-405B-Instruct-Turbo": "meta-llama/Meta-Llama-3.1-405B-Instruct-Turbo",
-    "together-ai/meta-llama/Meta-Llama-3.1-70B-Instruct-Turbo": "meta-llama/Meta-Llama-3.1-70B-Instruct-Turbo",
-    "together-ai/meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo": "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",
-    # --- Mistralai ---
-    "together-ai/mistralai/Ministral-3-14B-Instruct-2512": "mistralai/Ministral-3-14B-Instruct-2512",
-    "together-ai/mistralai/Mistral-7B-Instruct-v0.2": "mistralai/Mistral-7B-Instruct-v0.2",
-    "together-ai/mistralai/Mistral-7B-Instruct-v0.3": "mistralai/Mistral-7B-Instruct-v0.3",
-    "together-ai/mistralai/Mistral-Small-24B-Instruct-2501": "mistralai/Mistral-Small-24B-Instruct-2501",
-    "together-ai/mistralai/Mixtral-8x7B-Instruct-v0.1": "mistralai/Mixtral-8x7B-Instruct-v0.1",
-    # --- Moonshotai ---
-    "together-ai/moonshotai/Kimi-K2-Instruct-0905": "moonshotai/Kimi-K2-Instruct-0905",
-    "together-ai/moonshotai/Kimi-K2-Thinking": "moonshotai/Kimi-K2-Thinking",
-    "together-ai/moonshotai/Kimi-K2.5": "moonshotai/Kimi-K2.5",
-    "together-ai/moonshotai/Kimi-K3": "moonshotai/Kimi-K3",
-    # --- Nvidia ---
-    "together-ai/nvidia/NVIDIA-Nemotron-Nano-9B-v2": "nvidia/NVIDIA-Nemotron-Nano-9B-v2",
-    # --- Openai (Together AI namespace) ---
-    "together-ai/openai/gpt-oss-120b": "openai/gpt-oss-120b",
-    "together-ai/openai/gpt-oss-20b": "openai/gpt-oss-20b",
-    # --- Togethercomputer ---
-    "together-ai/togethercomputer/MoA-1": "togethercomputer/MoA-1",
-    "together-ai/togethercomputer/MoA-1-Turbo": "togethercomputer/MoA-1-Turbo",
-    "together-ai/togethercomputer/Refuel-Llm-V2": "togethercomputer/Refuel-Llm-V2",
-    "together-ai/togethercomputer/Refuel-Llm-V2-Small": "togethercomputer/Refuel-Llm-V2-Small",
-    # --- Zai-org ---
-    "together-ai/zai-org/GLM-4.5-Air-FP8": "zai-org/GLM-4.5-Air-FP8",
-    "together-ai/zai-org/GLM-4.6": "zai-org/GLM-4.6",
-    "together-ai/zai-org/GLM-4.7": "zai-org/GLM-4.7",
 }
 
-HYPERBOLIC_MODELS = {
-    # DeepSeek
-    "hyperbolic/deepseek-ai/DeepSeek-V3-0324": "deepseek-ai/DeepSeek-V3-0324",
-    # new
-    "hyperbolic/deepseek-ai/DeepSeek-R1-0528": "deepseek-ai/DeepSeek-R1-0528",
-    "hyperbolic/deepseek-ai/DeepSeek-R1": "deepseek-ai/DeepSeek-R1",
-    "hyperbolic/deepseek-ai/DeepSeek-V3": "deepseek-ai/DeepSeek-V3",
-    # llama
-    "hyperbolic/meta-llama/Llama-3.3-70B-Instruct": "meta-llama/Llama-3.3-70B-Instruct",
-    "hyperbolic/meta-llama/Llama-3.2-3B-Instruct": "meta-llama/Llama-3.2-3B-Instruct",
-    "hyperbolic/meta-llama/Meta-Llama-3.1-405B-Instruct": "meta-llama/Meta-Llama-3.1-405B-Instruct",
-    "hyperbolic/meta-llama/Meta-Llama-3.1-8B-Instruct": "meta-llama/Meta-Llama-3.1-8B-Instruct",
-    "hyperbolic/meta-llama/Meta-Llama-3.1-70B-Instruct": "meta-llama/Meta-Llama-3.1-70B-Instruct",
-    "hyperbolic/meta-llama/Meta-Llama-3-70B-Instruct": "meta-llama/Meta-Llama-3-70B-Instruct",
-    # Quen
-    "hyperbolic/Qwen/QwQ-32B": "Qwen/QwQ-32B",
-    "hyperbolic/Qwen/Qwen2.5-VL-7B-Instruct": "Qwen/Qwen2.5-VL-7B-Instruct",
-    "hyperbolic/Qwen/Qwen2.5-Coder-32B-Instruct": "Qwen/Qwen2.5-Coder-32B-Instruct",
-    "hyperbolic/Qwen/Qwen2.5-72B-Instruct": "Qwen/Qwen2.5-72B-Instruct",
-    "hyperbolic/Qwen/Qwen3-Next-80B-A3B-Thinking": "Qwen/Qwen3-Next-80B-A3B-Thinking",
-    "hyperbolic/Qwen/Qwen3-Coder-480B-A35B-Instruct": "Qwen/Qwen3-Coder-480B-A35B-Instruct",
-    "hyperbolic/Qwen/Qwen3-235B-A22B-Instruct-2507": "Qwen/Qwen3-235B-A22B-Instruct-2507",
-    "hyperbolic/Qwen/Qwen3-235B-A22B": "Qwen/Qwen3-235B-A22B",
-    "hyperbolic/qwen2-5-vl-72b-instruct": "Qwen/qwen2-5-vl-72b-instruct",
-    "hyperbolic/qwen-qwen3-vl-32b-thinking": "Qwen/qwen-qwen3-vl-32b-thinking",
-    "hyperbolic/nvidia-nemotron-nano-12b-v2-vl-bf16": "nvidia/nvidia-nemotron-nano-12b-v2-vl-bf16",
-    "hyperbolic/qwen2-5-vl-7b-instruct": "Qwen/qwen2-5-vl-7b-instruct",
-    # OpenAI
-    "hyperbolic/openai/gpt-oss-120b": "openai/gpt-oss-120b",
-    "hyperbolic/openai/gpt-oss-20b": "openai/gpt-oss-20b",
-    # New
-    "hyperbolic/openai/gpt-oss-120b-turbo": "openai/gpt-oss-120b-turbo",
-}
 
-# --- MASTER COMBINED MAP ---
-# This merges them all into one flat lookup for the Router
-MODEL_MAP = {
-    **DEEPSEEK_NATIVE_MODELS,
-    **TOGETHER_AI_MODELS,
-    **HYPERBOLIC_MODELS,
-    **OLLAMA_MODELS,
-    **VLLM_MODELS,
-}
+def translate_model_id(model: str) -> str:
+    """
+    Translate a Project David internal model identifier into the model
+    identifier expected by the selected inference provider.
+
+    This function performs translation only.
+
+    It intentionally does NOT validate whether the model currently exists,
+    is supported, has been deprecated, or is available to the user's
+    provider account.
+
+    Those concerns belong to provider discovery / provider error handling,
+    not the routing namespace.
+    """
+
+    if not isinstance(model, str):
+        return model
+
+    model = model.strip()
+
+    if not model:
+        return model
+
+    # Explicit synthetic routes / unavoidable naming exceptions win first.
+    alias = MODEL_ALIASES.get(model)
+
+    if alias is not None:
+        return alias
+
+    # Normal case: remove exactly one Project David routing namespace.
+    for prefix in MODEL_PROVIDER_PREFIXES:
+        if model.startswith(prefix):
+            return model[len(prefix) :]
+
+    # Already provider-native, or not a Project David namespaced model.
+    return model
+
+
+# ---------------------------------------------------------------------------
+# Backwards compatibility
+# ---------------------------------------------------------------------------
+#
+# Existing imports of MODEL_MAP should ideally be migrated to
+# translate_model_id().
+#
+# Keep this only temporarily if old code still imports MODEL_MAP directly.
+#
+
+MODEL_MAP = MODEL_ALIASES

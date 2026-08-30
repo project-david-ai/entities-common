@@ -1,3 +1,10 @@
+# [0.73.0](https://github.com/project-david-ai/entities-common/compare/v0.72.2...v0.73.0) (2026-08-30)
+
+
+### Features
+
+* expose thread materialization state ([3af5120](https://github.com/project-david-ai/entities-common/commit/3af5120d3da97def8977ad796117bbdad064e9d0))
+
 ## [0.72.2](https://github.com/project-david-ai/entities-common/compare/v0.72.1...v0.72.2) (2026-08-21)
 
 

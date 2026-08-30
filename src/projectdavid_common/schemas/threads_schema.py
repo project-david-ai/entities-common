@@ -33,6 +33,14 @@ class ThreadRead(BaseModel):
         description="Canonical owner of this thread. Read-only — set at creation time.",
     )
 
+    materialized: Optional[bool] = Field(
+        default=None,
+        description=(
+            "Whether this thread contains at least one persisted user message. "
+            "None means the producer did not provide materialization state."
+        ),
+    )
+
     model_config = ConfigDict(from_attributes=True)
 
 

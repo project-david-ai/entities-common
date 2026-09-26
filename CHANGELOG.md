@@ -1,3 +1,10 @@
+# [0.74.0](https://github.com/project-david-ai/entities-common/compare/v0.73.0...v0.74.0) (2026-09-26)
+
+
+### Features
+
+* add MCP registration contracts ([9b3ae49](https://github.com/project-david-ai/entities-common/commit/9b3ae4962bb35c8720aabdadb34dc4b5dd8722e2))
+
 # [0.73.0](https://github.com/project-david-ai/entities-common/compare/v0.72.2...v0.73.0) (2026-08-30)
 
 

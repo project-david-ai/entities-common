@@ -34,6 +34,14 @@ from projectdavid_common.schemas.files_schema import (
     FileUploadRequest,
 )
 from projectdavid_common.schemas.inference_schema import ProcessOutput
+from projectdavid_common.schemas.mcp_schemas import (
+    AssistantMcpToolRead,
+    AssistantMcpToolsAttach,
+    AssistantMcpToolsDetach,
+    McpServerRegistrationCreate,
+    McpServerRegistrationRead,
+    McpServerRegistrationUpdate,
+)
 from projectdavid_common.schemas.messages_schema import (
     MessageCreate,
     MessageDeleted,
@@ -159,6 +167,14 @@ class ValidationInterface:
 
     # Inference schemas
     ProcessOutput = ProcessOutput
+
+    # MCP schemas
+    McpServerRegistrationCreate = McpServerRegistrationCreate
+    McpServerRegistrationRead = McpServerRegistrationRead
+    McpServerRegistrationUpdate = McpServerRegistrationUpdate
+    AssistantMcpToolsAttach = AssistantMcpToolsAttach
+    AssistantMcpToolsDetach = AssistantMcpToolsDetach
+    AssistantMcpToolRead = AssistantMcpToolRead
 
     # Messages schemas
     MessageRole = MessageRole

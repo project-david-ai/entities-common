@@ -3,18 +3,46 @@
 from __future__ import annotations
 
 from datetime import datetime
-from typing import Literal
+from typing import Any, Literal
 
-from pydantic import BaseModel, ConfigDict, Field, HttpUrl, field_validator
+from pydantic import (
+    BaseModel,
+    ConfigDict,
+    Field,
+    HttpUrl,
+    SecretStr,
+    field_validator,
+    model_validator,
+)
+
+
+class McpServerAuth(BaseModel):
+    """Write-only authentication configuration for one MCP registration."""
+
+    type: Literal["none", "bearer"] = "none"
+    token: SecretStr | None = None
+
+    model_config = ConfigDict(extra="forbid")
+
+    @model_validator(mode="after")
+    def validate_auth(self) -> "McpServerAuth":
+        if self.type == "bearer":
+            if self.token is None or not self.token.get_secret_value().strip():
+                raise ValueError("Bearer authentication requires a token")
+        elif self.token is not None:
+            raise ValueError("Unauthenticated MCP registration may not include a token")
+
+        return self
 
 
 class McpServerRegistrationCreate(BaseModel):
-    """Register one unauthenticated remote Streamable HTTP MCP server."""
+    """Register one remote Streamable HTTP MCP server."""
 
     name: str = Field(..., min_length=1, max_length=128)
     url: HttpUrl
     transport: Literal["streamable_http"] = "streamable_http"
     timeout_seconds: float = Field(30.0, gt=0, le=300)
+    auth: McpServerAuth = Field(default_factory=McpServerAuth)
 
     model_config = ConfigDict(extra="forbid")
 
@@ -54,11 +82,33 @@ class McpServerRegistrationRead(BaseModel):
     url: HttpUrl
     transport: Literal["streamable_http"]
     timeout_seconds: float
+    auth_type: Literal["none", "bearer"]
     enabled: bool
     created_at: datetime
     updated_at: datetime
 
     model_config = ConfigDict(from_attributes=True)
+
+
+class McpDiscoveredToolRead(BaseModel):
+    """One discovered MCP tool exposed through the management API."""
+
+    server_id: str
+    remote_name: str
+    canonical_id: str
+    provider_name: str
+    definition: dict[str, Any]
+
+    model_config = ConfigDict(extra="forbid")
+
+
+class McpToolDiscoveryPageRead(BaseModel):
+    """Typed response for one remote MCP tools/list page."""
+
+    tools: list[McpDiscoveredToolRead]
+    next_cursor: str | None = None
+
+    model_config = ConfigDict(extra="forbid")
 
 
 def _validate_remote_tool_names(values: list[str]) -> list[str]:
@@ -124,7 +174,10 @@ __all__ = [
     "AssistantMcpToolRead",
     "AssistantMcpToolsAttach",
     "AssistantMcpToolsDetach",
+    "McpServerAuth",
     "McpServerRegistrationCreate",
     "McpServerRegistrationRead",
     "McpServerRegistrationUpdate",
+    "McpDiscoveredToolRead",
+    "McpToolDiscoveryPageRead",
 ]

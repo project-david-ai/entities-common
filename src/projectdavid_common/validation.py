@@ -38,9 +38,11 @@ from projectdavid_common.schemas.mcp_schemas import (
     AssistantMcpToolRead,
     AssistantMcpToolsAttach,
     AssistantMcpToolsDetach,
+    McpDiscoveredToolRead,
     McpServerRegistrationCreate,
     McpServerRegistrationRead,
     McpServerRegistrationUpdate,
+    McpToolDiscoveryPageRead,
 )
 from projectdavid_common.schemas.messages_schema import (
     MessageCreate,
@@ -169,6 +171,8 @@ class ValidationInterface:
     ProcessOutput = ProcessOutput
 
     # MCP schemas
+    McpDiscoveredToolRead = McpDiscoveredToolRead
+    McpToolDiscoveryPageRead = McpToolDiscoveryPageRead
     McpServerRegistrationCreate = McpServerRegistrationCreate
     McpServerRegistrationRead = McpServerRegistrationRead
     McpServerRegistrationUpdate = McpServerRegistrationUpdate

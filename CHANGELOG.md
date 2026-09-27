@@ -1,3 +1,10 @@
+# [0.75.0](https://github.com/project-david-ai/entities-common/compare/v0.74.0...v0.75.0) (2026-09-27)
+
+
+### Features
+
+* add MCP authentication schemas ([db85783](https://github.com/project-david-ai/entities-common/commit/db857835098f2fbea7c5e1a88188980dd32cb7bf))
+
 # [0.74.0](https://github.com/project-david-ai/entities-common/compare/v0.73.0...v0.74.0) (2026-09-26)
 
 

@@ -1,3 +1,10 @@
+# [0.76.0](https://github.com/project-david-ai/entities-common/compare/v0.75.0...v0.76.0) (2026-09-29)
+
+
+### Features
+
+* **schemas:** add scratchpad resource contracts ([46c2824](https://github.com/project-david-ai/entities-common/commit/46c282438a8e45998b706044982e7e9d78e448b6))
+
 # [0.75.0](https://github.com/project-david-ai/entities-common/compare/v0.74.0...v0.75.0) (2026-09-27)
 
 

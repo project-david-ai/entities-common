@@ -1,3 +1,10 @@
+# [0.77.0](https://github.com/project-david-ai/entities-common/compare/v0.76.0...v0.77.0) (2026-09-29)
+
+
+### Features
+
+* **scratchpads:** add data-plane contracts ([6fc7d17](https://github.com/project-david-ai/entities-common/commit/6fc7d17cb76bd07882459ed2152478f33912b537))
+
 # [0.76.0](https://github.com/project-david-ai/entities-common/compare/v0.75.0...v0.76.0) (2026-09-29)
 
 

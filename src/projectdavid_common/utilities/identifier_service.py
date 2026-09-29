@@ -19,6 +19,11 @@ class IdentifierService:
         return IdentifierService.generate_id("thread")
 
     @staticmethod
+    def generate_scratchpad_id() -> str:
+        """Generate a unique Scratchpad resource identifier."""
+        return IdentifierService.generate_id("scratchpad")
+
+    @staticmethod
     def generate_user_id() -> str:
         """Generate a user ID."""
         return IdentifierService.generate_id("user")

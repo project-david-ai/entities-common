@@ -70,6 +70,13 @@ from projectdavid_common.schemas.runs_schema import (
     RunStatusUpdate,
     TruncationStrategy,
 )
+from projectdavid_common.schemas.scratchpads_schema import (
+    ScratchpadCreate,
+    ScratchpadDeleted,
+    ScratchpadList,
+    ScratchpadRead,
+    ScratchpadUpdate,
+)
 from projectdavid_common.schemas.stream_schema import StreamRequest
 from projectdavid_common.schemas.threads_schema import (
     ThreadCreate,
@@ -197,6 +204,13 @@ class ValidationInterface:
     TruncationStrategy = TruncationStrategy
     RunStatusUpdate = RunStatusUpdate
     RunListResponse = RunListResponse
+
+    # Scratchpad schemas
+    ScratchpadCreate = ScratchpadCreate
+    ScratchpadRead = ScratchpadRead
+    ScratchpadUpdate = ScratchpadUpdate
+    ScratchpadList = ScratchpadList
+    ScratchpadDeleted = ScratchpadDeleted
 
     # Threads schemas
     ThreadCreate = ThreadCreate

@@ -3,7 +3,7 @@
 from __future__ import annotations
 
 from datetime import datetime
-from typing import Any
+from typing import Any, Literal
 
 from pydantic import BaseModel, ConfigDict, Field
 
@@ -63,3 +63,59 @@ __all__ = [
     "ScratchpadRead",
     "ScratchpadUpdate",
 ]
+
+
+class ScratchpadContentUpdate(BaseModel):
+    """Replace the mutable working body for a Scratchpad."""
+
+    content: str
+
+    model_config = ConfigDict(extra="forbid")
+
+
+class ScratchpadContentRead(BaseModel):
+    """Current mutable working body for a Scratchpad."""
+
+    scratchpad_id: str
+    content: str
+    updated_at: datetime | None = None
+
+    model_config = ConfigDict(extra="forbid")
+
+
+class ScratchpadEntryCreate(BaseModel):
+    """Append one immutable entry to a Scratchpad ledger."""
+
+    content: str = Field(..., min_length=1)
+
+    model_config = ConfigDict(extra="forbid")
+
+
+class ScratchpadEntryRead(BaseModel):
+    """One ordered Scratchpad ledger entry."""
+
+    scratchpad_id: str
+    content: str
+    created_at: datetime
+
+    model_config = ConfigDict(extra="forbid")
+
+
+class ScratchpadEntryList(BaseModel):
+    """Ordered Scratchpad append ledger."""
+
+    object: str = "list"
+    data: list[ScratchpadEntryRead]
+
+    model_config = ConfigDict(extra="forbid")
+
+
+class ScratchpadStateCleared(BaseModel):
+    """Typed acknowledgement for clearing mutable Scratchpad state."""
+
+    id: str
+    object: str = "scratchpad.state.cleared"
+    scope: Literal["content", "entries", "all"]
+    cleared: bool = True
+
+    model_config = ConfigDict(extra="forbid")

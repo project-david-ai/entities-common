@@ -64,6 +64,7 @@ class Run(BaseModel):
     status: RunStatus
     thread_id: str
     tool_choice: str
+    tools: List[Dict[str, Any]] = Field(default_factory=list)
     # Accept 'auto' or None on read
     truncation_strategy: Optional[TruncationStrategy] = None
     usage: Optional[Any]
@@ -95,7 +96,7 @@ class RunCreate(BaseModel):
     max_completion_tokens: Optional[int] = 1000
     max_prompt_tokens: Optional[int] = 500
     meta_data: Dict[str, Any] = Field(default_factory=dict)
-    model: str = "gpt-4"
+    model: Optional[str] = None
     object: str = "run"
     parallel_tool_calls: bool = False
     required_action: Optional[str] = None
@@ -109,7 +110,7 @@ class RunCreate(BaseModel):
     usage: Optional[Any] = None
     temperature: float = 0.7
     top_p: float = 0.9
-    tool_resources: Dict[str, Any] = Field(default_factory=dict)
+    tool_resources: Optional[Dict[str, Any]] = None
     model_config = ConfigDict(from_attributes=True)
 
 
@@ -140,6 +141,7 @@ class RunReadDetailed(BaseModel):
     status: RunStatus
     thread_id: str
     tool_choice: Optional[str] = None
+    tools: List[Dict[str, Any]] = Field(default_factory=list)
     # Accept 'auto' or None on read
     truncation_strategy: Optional[TruncationStrategy] = None
     usage: Optional[Any] = None

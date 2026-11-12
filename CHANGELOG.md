@@ -1,3 +1,10 @@
+## [0.77.1](https://github.com/project-david-ai/entities-common/compare/v0.77.0...v0.77.1) (2026-11-12)
+
+
+### Bug Fixes
+
+* make run model and tool resources optional to support assistant inheritance ([1346a93](https://github.com/project-david-ai/entities-common/commit/1346a9329d272c91367aa1b6839fa12b937496c6))
+
 # [0.77.0](https://github.com/project-david-ai/entities-common/compare/v0.76.0...v0.77.0) (2026-09-29)
 
 

@@ -1,4 +1,5 @@
 # src/projectdavid_common/validation.py
+
 from projectdavid_common.schemas.actions_schema import (
     ActionBase,
     ActionCreate,
@@ -28,6 +29,15 @@ from projectdavid_common.schemas.deployment_schemas import (
     DeploymentRecord,
 )
 from projectdavid_common.schemas.enums import ProviderEnum, StatusEnum
+from projectdavid_common.schemas.execution_ledger_schema import (
+    DelegationPage,
+    DelegationRead,
+    ExecutionActorRead,
+    ExecutionEpochRead,
+    ExecutionEventPage,
+    ExecutionEventRead,
+    ExecutionPage,
+)
 from projectdavid_common.schemas.files_schema import (
     FileDeleteResponse,
     FileResponse,
@@ -154,6 +164,7 @@ class ValidationInterface:
     This interface allows consumers to access the various schemas like:
         - ValidationInterface.FileUploadRequest
         - ValidationInterface.ActionCreate
+        - ValidationInterface.ExecutionPage
         - etc.
     """
 
@@ -210,6 +221,15 @@ class ValidationInterface:
     TruncationStrategy = TruncationStrategy
     RunStatusUpdate = RunStatusUpdate
     RunListResponse = RunListResponse
+
+    # Execution ledger schemas
+    ExecutionActorRead = ExecutionActorRead
+    ExecutionEpochRead = ExecutionEpochRead
+    ExecutionPage = ExecutionPage
+    DelegationRead = DelegationRead
+    DelegationPage = DelegationPage
+    ExecutionEventRead = ExecutionEventRead
+    ExecutionEventPage = ExecutionEventPage
 
     # Scratchpad schemas
     ScratchpadCreate = ScratchpadCreate

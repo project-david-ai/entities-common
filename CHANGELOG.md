@@ -1,3 +1,10 @@
+# [0.78.0](https://github.com/project-david-ai/entities-common/compare/v0.77.1...v0.78.0) (2026-11-14)
+
+
+### Features
+
+* add public execution ledger response contracts ([df4377b](https://github.com/project-david-ai/entities-common/commit/df4377bef1ac334c3b45debc0d8993c897a3bfac))
+
 ## [0.77.1](https://github.com/project-david-ai/entities-common/compare/v0.77.0...v0.77.1) (2026-11-12)
 
 

@@ -18,6 +18,7 @@ from projectdavid_common.schemas.assistants_schema import (
     AssistantCreate,
     AssistantRead,
     AssistantUpdate,
+    PlaygroundBootstrapRequest,
 )
 from projectdavid_common.schemas.deployment_schemas import (
     ActivateBaseModelRequest,
@@ -181,6 +182,7 @@ class ValidationInterface:
     AssistantRead = AssistantRead
     AssistantUpdate = AssistantUpdate
     VectorStoreRead = VectorStoreRead
+    PlaygroundBootstrapRequest = PlaygroundBootstrapRequest
 
     # Enum schemas
     ProviderEnum = ProviderEnum

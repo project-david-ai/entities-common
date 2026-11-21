@@ -164,3 +164,9 @@ class AssistantUpdate(BaseModel):
         return _validate_unique_tool_names(v)
 
     model_config = ConfigDict(extra="forbid")
+
+
+class PlaygroundBootstrapRequest(BaseModel):
+    model: str = Field(min_length=1, max_length=128)
+
+    model_config = ConfigDict(extra="forbid")

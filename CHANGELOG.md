@@ -1,3 +1,10 @@
+# [0.79.0](https://github.com/project-david-ai/entities-common/compare/v0.78.0...v0.79.0) (2026-11-21)
+
+
+### Features
+
+* add playground bootstrap contract and automated PR workflow ([d4ab4d7](https://github.com/project-david-ai/entities-common/commit/d4ab4d7903fe02ba392241a9d1ee05cbdab29d59))
+
 # [0.78.0](https://github.com/project-david-ai/entities-common/compare/v0.77.1...v0.78.0) (2026-11-14)
 
 

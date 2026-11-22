@@ -1,3 +1,10 @@
+# [0.80.0](https://github.com/project-david-ai/entities-common/compare/v0.79.0...v0.80.0) (2026-11-22)
+
+
+### Features
+
+* **common:** add provider key management contracts ([59bb6af](https://github.com/project-david-ai/entities-common/commit/59bb6af1e31208085c6aa2576fb3cb7333db4343))
+
 # [0.79.0](https://github.com/project-david-ai/entities-common/compare/v0.78.0...v0.79.0) (2026-11-21)
 
 

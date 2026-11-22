@@ -1,5 +1,3 @@
-# src/projectdavid_common/validation.py
-
 from projectdavid_common.schemas.actions_schema import (
     ActionBase,
     ActionCreate,
@@ -63,6 +61,11 @@ from projectdavid_common.schemas.messages_schema import (
     MessagesList,
     MessageUpdate,
     ToolMessageCreate,
+)
+from projectdavid_common.schemas.provider_keys_schemas import (
+    ProviderKeyCreate,
+    ProviderKeyRead,
+    ProviderKeyUpdate,
 )
 from projectdavid_common.schemas.registry_schemas import (
     BaseModelDeleted,
@@ -205,6 +208,11 @@ class ValidationInterface:
     AssistantMcpToolsAttach = AssistantMcpToolsAttach
     AssistantMcpToolsDetach = AssistantMcpToolsDetach
     AssistantMcpToolRead = AssistantMcpToolRead
+
+    # Provider key schemas
+    ProviderKeyCreate = ProviderKeyCreate
+    ProviderKeyRead = ProviderKeyRead
+    ProviderKeyUpdate = ProviderKeyUpdate
 
     # Messages schemas
     MessageRole = MessageRole

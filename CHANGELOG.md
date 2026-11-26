@@ -1,3 +1,10 @@
+# [0.81.0](https://github.com/project-david-ai/entities-common/compare/v0.80.0...v0.81.0) (2026-11-26)
+
+
+### Features
+
+* **common:** add shared function definition validation ([6e31915](https://github.com/project-david-ai/entities-common/commit/6e319152458c55348712dd570a1824f0b57c98d9))
+
 # [0.80.0](https://github.com/project-david-ai/entities-common/compare/v0.79.0...v0.80.0) (2026-11-22)
 
 
